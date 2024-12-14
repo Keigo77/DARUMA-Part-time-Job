@@ -94,9 +94,9 @@ GameObject:
   m_Component:
   - component: {fileID: 2275267593362301308}
   - component: {fileID: 5294992968767283411}
-  - component: {fileID: 754356494867548558}
+  - component: {fileID: 683433733315768943}
   m_Layer: 0
-  m_Name: Daruma
+  m_Name: NRedDaruma
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -171,7 +171,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &754356494867548558
+--- !u!114 &683433733315768943
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -180,14 +180,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 2093446195665892461}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 73f5021846a024fc499225826f74b2de, type: 3}
+  m_Script: {fileID: 11500000, guid: b87f0145cb3bf416bbfeb33bffc7a5ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _daruma: {fileID: 5294992968767283411}
-  _leftEyeSprite: {fileID: 875900407043473576}
-  _rightEyeSprite: {fileID: 5294962066603322434}
-  _leftEyeTransform: {fileID: 7750616716813391504}
-  _rightEyeTransform: {fileID: 2687089591871276734}
+  _eyeSpritesList:
+  - {fileID: 875900407043473576}
+  - {fileID: 5294962066603322434}
+  _eyeTransformList:
+  - {fileID: 7750616716813391504}
+  - {fileID: 2687089591871276734}
+  _randomNumList: 0000000001000000
+  _howDelete: 1
 --- !u!1 &3150414866446302781
 GameObject:
   m_ObjectHideFlags: 0

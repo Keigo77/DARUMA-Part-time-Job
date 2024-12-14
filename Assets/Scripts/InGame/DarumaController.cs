@@ -1,71 +1,61 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Serialization;
-using UnityEngine.UI;
 
 public class DarumaController : MonoBehaviour
 {
-    [SerializeField] private SpriteRenderer _leftEyeSprite;      // 目の削除/有効
-    [SerializeField] private SpriteRenderer _rightEyeSprite;
-    [SerializeField] private Transform _leftEyeTransform;        // 目の拡大
-    [SerializeField] private Transform _rightEyeTransform;
-
-    private int randomNum = 0;
+    [SerializeField] private SpriteRenderer[] _eyeSpritesList;
+    [SerializeField] private Transform[] _eyeTransformList;
+    [SerializeField] private List<int> _randomNumList = new List<int> { 0, 1, 2, 3 };
+    [SerializeField] private int _howDelete = 3;
+    [SerializeField] private int _scoreBasis = 50;
+    
     GameManager GameManagerScript = null;
     
     // Start is called before the first frame update
     void Start()
     {
-        randomNum = Random.Range(0, 2);     // 0なら左がない，1なら右がない
-        DeleteEye(randomNum);
+        DeleteEye(_howDelete);
     }
 
-    public void DeleteEye(int randomNum)    // ランダムで選ばれた片方の目を削除する
+    public void DeleteEye(int howDelete)    // ランダムで選ばれた片方の目を削除する
     {
-        switch (randomNum)
+        for (int i = 0; i < howDelete; i++)
         {
-            case 0:
-                _leftEyeSprite.enabled = false;
-                break;
-            case 1:
-                _rightEyeSprite.enabled = false;
-                break;
-            default:
-                Debug.Log("予期せぬ値です：" + randomNum);
-                break;
+            int randomNum = Random.Range(0, _randomNumList.Count);      // 配列から数字を取り出して，それに対応する目を消す
+            _eyeSpritesList[_randomNumList[randomNum]].enabled = false;
+            _randomNumList.RemoveAt(randomNum);
         }
     }
 
-    public void RightButtonClick()
+    public void ButtonClick(int directionNum)
     {
-        if (!_rightEyeSprite.enabled)
+        if (_eyeSpritesList.Length <= directionNum) return;     // 2つ目だるまの時に上下ボタンを押したら早期return
+        if (!_eyeSpritesList[directionNum].enabled)
         {
-            GameManagerScript.AddScoreCombo(100 * (GameManagerScript.GetCombo() * 0.01f + 1.0f));            // 加点&コンボ数増加関数を実行
-            _rightEyeSprite.enabled = true;
-            GameManagerScript.AppearDaruma();
-            Destroy(this.gameObject);
+            // 加点
+            _eyeSpritesList[directionNum].enabled = true;
+            isCompeteEye();
         }
         else
         {
-            GameManagerScript.ResetCombo();             // コンボリセットを実行
-            _rightEyeTransform.localScale *= 1.1f;
+            _eyeTransformList[directionNum].localScale *= 1.1f;
+            GameManagerScript.ResetCombo();
         }
     }
-    
-    public void LeftButtonClick()
+
+    private void isCompeteEye()
     {
-        if (!_leftEyeSprite.enabled)
+        bool isCompeteEye = true;
+        for (int i = 0; i < _eyeSpritesList.Length; i++)    // 全部の目が書けていたら完成
         {
-            GameManagerScript.AddScoreCombo(100 * (GameManagerScript.GetCombo() * 0.01f + 1.0f));            // 加点&コンボ数増加関数を実行
-            _leftEyeSprite.enabled = true;
-            GameManagerScript.AppearDaruma();
-            Destroy(this.gameObject);
+            if (!_eyeSpritesList[i].enabled) isCompeteEye = false;
         }
-        else
+        if (isCompeteEye)       // もしだるまが完成したら加点，破壊，新しいのを出現
         {
-            GameManagerScript.ResetCombo();             // コンボリセットを実行
-            _leftEyeTransform.localScale *= 1.1f;
+            GameManagerScript.AddScoreCombo(_scoreBasis * (GameManagerScript.combo * 0.01f + 1.0f));
+            Destroy(this.gameObject);
+            GameManagerScript.AppearDaruma();
         }
     }
 
