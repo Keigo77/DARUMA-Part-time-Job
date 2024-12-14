@@ -6,8 +6,6 @@ using UnityEngine.UI;
 
 public class DarumaController : MonoBehaviour
 {
-    [SerializeField] private SpriteRenderer _daruma;        // だるま本体の色を変えられるように
-
     [SerializeField] private SpriteRenderer _leftEyeSprite;      // 目の削除/有効
     [SerializeField] private SpriteRenderer _rightEyeSprite;
     [SerializeField] private Transform _leftEyeTransform;        // 目の拡大
@@ -51,7 +49,7 @@ public class DarumaController : MonoBehaviour
         else
         {
             GameManagerScript.ResetCombo();             // コンボリセットを実行
-            _rightEyeTransform.localScale *= 1.5f;
+            _rightEyeTransform.localScale *= 1.1f;
         }
     }
     
@@ -67,7 +65,7 @@ public class DarumaController : MonoBehaviour
         else
         {
             GameManagerScript.ResetCombo();             // コンボリセットを実行
-            _leftEyeTransform.localScale *= 1.2f;
+            _leftEyeTransform.localScale *= 1.1f;
         }
     }
 
