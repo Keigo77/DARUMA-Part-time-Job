@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject _c3BlackDarumaPrefab;
     
     private GameObject _daruma;     // 現在画面にいるダルマが入る
+    private float _yPosition = 0.8f;
     private DarumaController DarumaControllerScript;     // 現在画面にいるダルマのスクリプト
     
     // スコア系
@@ -29,6 +30,9 @@ public class GameManager : MonoBehaviour
     private float _score = 0;
     public int combo { get; set; } = 0;
     private int _darumaCount = 0;       // 一定数ダルマを作ったならキメラダルマを登場させる，だるまの色を変える
+    
+    // ゲームが終わったかどうか
+    [SerializeField] private TimeManager TimeManagerScript;
     
     // Start is called before the first frame update
     void Start()
@@ -41,22 +45,24 @@ public class GameManager : MonoBehaviour
 
     public void AppearDaruma()     // ダルマを出現させる 
     {
+        if (TimeManagerScript.isGameFinish) return;     // ゲーム中でないなら早期リターン
+        
         switch (_darumaCount % 3)
         {
             case 0:
-                if (_darumaCount >= 20) _daruma = Instantiate(_c3RedDarumaPrefab, new Vector3(0.0f, 2.0f, 0.0f), Quaternion.identity);
-                else if (_darumaCount >= 10) _daruma = Instantiate(_c2RedDarumaPrefab, new Vector3(0.0f, 2.0f, 0.0f), Quaternion.identity);
-                else _daruma = Instantiate(_redDarumaPrefab, new Vector3(0.0f, 2.0f, 0.0f), Quaternion.identity);
+                if (_darumaCount >= 20) _daruma = Instantiate(_c3RedDarumaPrefab, new Vector3(0.0f, _yPosition, 0.0f), Quaternion.identity);
+                else if (_darumaCount >= 10) _daruma = Instantiate(_c2RedDarumaPrefab, new Vector3(0.0f, _yPosition, 0.0f), Quaternion.identity);
+                else _daruma = Instantiate(_redDarumaPrefab, new Vector3(0.0f, _yPosition, 0.0f), Quaternion.identity);
                 break;
             case 1:
-                if (_darumaCount >= 20) _daruma = Instantiate(_c3BlueDarumaPrefab, new Vector3(0.0f, 2.0f, 0.0f), Quaternion.identity);
-                else if (_darumaCount >= 10) _daruma = Instantiate(_c2BlueDarumaPrefab, new Vector3(0.0f, 2.0f, 0.0f), Quaternion.identity);
-                else _daruma = Instantiate(_blueDarumaPrefab, new Vector3(0.0f, 2.0f, 0.0f), Quaternion.identity);
+                if (_darumaCount >= 20) _daruma = Instantiate(_c3BlueDarumaPrefab, new Vector3(0.0f, _yPosition, 0.0f), Quaternion.identity);
+                else if (_darumaCount >= 10) _daruma = Instantiate(_c2BlueDarumaPrefab, new Vector3(0.0f, _yPosition, 0.0f), Quaternion.identity);
+                else _daruma = Instantiate(_blueDarumaPrefab, new Vector3(0.0f, _yPosition, 0.0f), Quaternion.identity);
                 break;
             case 2:
-                if (_darumaCount >= 20) _daruma = Instantiate(_c3BlackDarumaPrefab, new Vector3(0.0f, 2.0f, 0.0f), Quaternion.identity);
-                else if (_darumaCount >= 10) _daruma = Instantiate(_c2BlackDarumaPrefab, new Vector3(0.0f, 2.0f, 0.0f), Quaternion.identity);
-                else _daruma = Instantiate(_blackDarumaPrefab, new Vector3(0.0f, 2.0f, 0.0f), Quaternion.identity);
+                if (_darumaCount >= 20) _daruma = Instantiate(_c3BlackDarumaPrefab, new Vector3(0.0f, _yPosition, 0.0f), Quaternion.identity);
+                else if (_darumaCount >= 10) _daruma = Instantiate(_c2BlackDarumaPrefab, new Vector3(0.0f, _yPosition, 0.0f), Quaternion.identity);
+                else _daruma = Instantiate(_blackDarumaPrefab, new Vector3(0.0f, _yPosition, 0.0f), Quaternion.identity);
                 break;
             default:
                 Debug.Log("darumaCountのエラー");

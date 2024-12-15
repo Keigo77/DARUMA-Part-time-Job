@@ -41,7 +41,7 @@ public class NoUse : MonoBehaviour
     {
         if (!_rightEyeSprite.enabled)
         {
-            GameManagerScript.AddScoreCombo(100 * (GameManagerScript.GetCombo() * 0.01f + 1.0f));            // 加点&コンボ数増加関数を実行
+            GameManagerScript.AddScoreCombo(100 * (GameManagerScript.combo * 0.01f + 1.0f));            // 加点&コンボ数増加関数を実行
             _rightEyeSprite.enabled = true;
             GameManagerScript.AppearDaruma();
             Destroy(this.gameObject);
@@ -57,7 +57,7 @@ public class NoUse : MonoBehaviour
     {
         if (!_leftEyeSprite.enabled)
         {
-            GameManagerScript.AddScoreCombo(100 * (GameManagerScript.GetCombo() * 0.01f + 1.0f));            // 加点&コンボ数増加関数を実行
+            GameManagerScript.AddScoreCombo(100 * (GameManagerScript.combo * 0.01f + 1.0f));            // 加点&コンボ数増加関数を実行
             _leftEyeSprite.enabled = true;
             GameManagerScript.AppearDaruma();
             Destroy(this.gameObject);
