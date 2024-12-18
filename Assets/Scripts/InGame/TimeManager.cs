@@ -6,32 +6,38 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
-using Cysharp.Threading.Tasks;
 
 public class TimeManager : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI _timeText;
     [SerializeField] private Image _timeCircle;
-    [SerializeField] private float _time = 30.0f;
+    private float _time = 30.0f;
+    
+    // カウントダウン
+    private float _countDownTime = 4.0f;
+    [SerializeField] private GameObject _startPanel;
+    [SerializeField] private TextMeshProUGUI _countDownText; 
     public bool isGameFinish { get; set; } = true;
     
-    private CancellationTokenSource _cancellationTokenSource;
-    
-    
     // Start is called before the first frame update
-    async void Start()
+    void Start()
     {
-        _cancellationTokenSource = new CancellationTokenSource();
-        _timeText.text = ((int)_time).ToString();
-        await UniTask.Delay(TimeSpan.FromSeconds(3.0f), cancellationToken: _cancellationTokenSource.Token);
-        isGameFinish = false;
-        
+        _timeText.text = ((int)_time).ToString();           // 時間をテキストに反映
+        _countDownText.text = ((int)_countDownTime).ToString();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (isGameFinish) return;
+        if (isGameFinish && _countDownTime > 1)
+        {
+            _countDownTime -= Time.deltaTime;
+            _countDownText.text = ((int)_countDownTime).ToString();
+        } else if (_countDownTime <= 1)
+        {
+            _startPanel.SetActive(false);
+            isGameFinish = false;
+        }
         
         _time -= Time.deltaTime;
         _timeText.text = ((int)_time).ToString();
