@@ -22,7 +22,8 @@ public class GameManager : MonoBehaviour
     
     // スコア系
     [SerializeField] private TextMeshProUGUI _comboText;
-    public float score { get; set; } = 0.0f;
+    public static float score = 0.0f;
+    public static int highScore = 0;
     public int combo { get; set; } = 0;
     private int _darumaCount = 0;       // 一定数ダルマを作ったならキメラダルマを登場させる，だるまの色を変える
     
@@ -78,7 +79,7 @@ public class GameManager : MonoBehaviour
 
     public void AddScoreCombo(float score)       // ダルマ側で実行される
     {
-        this.score += score;
+        GameManager.score += score;
         combo++;
         _comboText.text = combo.ToString() + "\nCombo!";
         Debug.Log("倍率：" + (combo * 0.01f + 1.0f));

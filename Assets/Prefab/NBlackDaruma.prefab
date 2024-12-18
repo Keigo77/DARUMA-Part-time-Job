@@ -191,6 +191,7 @@ MonoBehaviour:
   - {fileID: 2687089591871276734}
   _randomNumList: 0000000001000000
   _howDelete: 1
+  _scoreBasis: 1000
 --- !u!1 &3150414866446302781
 GameObject:
   m_ObjectHideFlags: 0
