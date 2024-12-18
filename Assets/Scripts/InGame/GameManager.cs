@@ -36,13 +36,20 @@ public class GameManager : MonoBehaviour
     async void Start()
     {
         _cancellationTokenSource = new CancellationTokenSource();
-        await UniTask.WaitUntil(() => !TimeManagerScript.isGameFinish, PlayerLoopTiming.Update, _cancellationTokenSource.Token);
+        try
+        {
+            await UniTask.WaitUntil(() => TimeManagerScript.isGameStart, PlayerLoopTiming.Update, _cancellationTokenSource.Token);
+        }
+        catch
+        {
+            Debug.Log("キャンセル");
+        }
         AppearDaruma();
     }
 
     public void AppearDaruma()     // ダルマを出現させる 
     {
-        if (TimeManagerScript.isGameFinish) return;     // ゲーム中でないなら早期リターン
+        if (TimeManagerScript.isGameFinish || !TimeManagerScript.isGameStart) return;     // ゲーム中でないなら早期リターン
         
         int _kind = _darumaCount % 3;
         if (_darumaCount >= 20) 
@@ -59,7 +66,7 @@ public class GameManager : MonoBehaviour
     
     public void ButtonClick(int directionNUm)
     {
-        if (TimeManagerScript.isGameFinish) return;
+        if (TimeManagerScript.isGameFinish || !TimeManagerScript.isGameStart) return;
         DarumaControllerScript.ButtonClick(directionNUm);
     }
 
