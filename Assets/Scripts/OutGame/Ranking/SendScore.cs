@@ -21,6 +21,7 @@ public class SendScore : MonoBehaviour
     {
         Debug.Log("ログイン成功");
         SubmitScore();
+        SubmitDarumaCount();
     }
     private void PlayFabAuthService_OnPlayFabError(PlayFabError error)
     {
@@ -68,12 +69,12 @@ public class SendScore : MonoBehaviour
                 new StatisticUpdate
                 {
                     StatisticName = "SumDarumaCount",
-                    Value = GameManager._darumaCount
+                    Value = PlayerPrefs.GetInt("DarumaCount")
                 }
             }
         }, result =>
         {
-            Debug.Log($"スコア {GameManager.highScore} 送信完了！");
+            Debug.Log($"だるまの合計 {PlayerPrefs.GetInt("DarumaCount")} 送信完了！");
         }, error =>
         {
             Debug.Log(error.GenerateErrorReport());

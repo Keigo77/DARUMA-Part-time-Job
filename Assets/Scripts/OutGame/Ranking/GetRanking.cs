@@ -2,9 +2,26 @@ using System.Collections.Generic;
 using UnityEngine;
 using PlayFab.ClientModels;
 using PlayFab;
+using TMPro;
+using UnityEngine.UI;
 
 public class GetRanking : MonoBehaviour
 {
+    [SerializeField] private TextMeshProUGUI[] _rankTexts;
+    [SerializeField] private TextMeshProUGUI[] _userNameTexts;
+    [SerializeField] private TextMeshProUGUI[] _userScoreTexts;
+    
+    private int[] _getRanks = new int[200];
+    private string[] _getNames = new string[200];
+    private int[] _getScores = new int[200];
+    private int _startRank = 0;
+    private int _index = 0;
+    
+    // 1位〜3位の画像
+    [SerializeField] private Image _goldImage;
+    [SerializeField] private Image _silverImage;
+    [SerializeField] private Image _bronzeImage;
+    
     private void OnEnable()
     {
         PlayFabAuthService.OnLoginSuccess += PlayFabAuthService_OnLoginSuccess;
@@ -28,11 +45,15 @@ public class GetRanking : MonoBehaviour
     }
     void Start()
     {
+        _goldImage.enabled = false;
+        _silverImage.enabled = false;
+        _bronzeImage.enabled = false;
         PlayFabAuthService.Instance.Authenticate(Authtypes.Silent);
     }
 
     public void GetLeaderboard()
     {
+        int index = 0;
         PlayFabClientAPI.GetLeaderboard(new GetLeaderboardRequest
         {
             StatisticName = "JobRanking"
@@ -40,16 +61,62 @@ public class GetRanking : MonoBehaviour
         {
             foreach (var item in result.Leaderboard)
             {
+                if (index >= 200) return;   // 200人以上のデータは取得しない
                 string displayName = item.DisplayName;
                 if (displayName == null)
                 {
                     displayName = "NoName";
                 }
+                _getRanks[index] = item.Position;   // 配列に全て入れる
+                _getNames[index] = displayName;
+                _getScores[index] = item.StatValue;
+                index++;
+                
                 Debug.Log($"{item.Position + 1}位:{displayName} " + $"スコア {item.StatValue}");
             }
+            ShowRank(); // 取得したらテキストに反映
         }, error =>
         {
             Debug.Log(error.GenerateErrorReport());
         });
+    }
+
+    public void ShowRank()
+    {
+        // ランクをテキストに反映
+        for (int i = (50 * _startRank); i < (_startRank + 1 ) * 50; _index++)
+        {
+            if (_getScores[i] != 0)
+            {
+                if (_getRanks[i] + 1 == 1) _goldImage.enabled = true;
+                else if (_getRanks[i] + 1 == 2) _silverImage.enabled = true;
+                else if (_getRanks[i] + 1 == 3) _bronzeImage.enabled = true;
+                _rankTexts[_index].text = (_getRanks[i] + 1).ToString();
+                _userNameTexts[_index].text = _getNames[i];
+                _userScoreTexts[_index].text = _getScores[i].ToString();
+            }
+            else   // データがない時は，空欄を表示
+            {
+                _rankTexts[_index].text = "";
+                _userNameTexts[_index].text = "";
+                _userScoreTexts[_index].text = "";
+            }
+            i++;
+        }
+        _index = 0;
+    }
+
+    public void ShowNextRank()  // 次の50位を表示
+    {
+        if (_getScores[(_startRank + 1) * 50] == 0) return; // データがないため無効
+        _startRank++;
+        ShowRank();
+    }
+    
+    public void ShowBeforeRank()  // 前の50位を表示
+    {
+        if (_startRank - 1 < 0) return; // データがないため無効
+        _startRank--;
+        ShowRank();
     }
 }

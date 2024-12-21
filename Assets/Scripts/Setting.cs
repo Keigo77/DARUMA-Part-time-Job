@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Setting : MonoBehaviour
 {
+    public static string userName = ""; 
     // Start is called before the first frame update
     void Start()
     {
