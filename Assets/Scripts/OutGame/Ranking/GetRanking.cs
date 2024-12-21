@@ -114,7 +114,7 @@ public class GetRanking : MonoBehaviour
         //GetLeaderboardAroundPlayerRequestのインスタンスを生成
         var request = new GetLeaderboardAroundPlayerRequest{
             StatisticName   = "JobRanking", //ランキング名(統計情報名)
-            MaxResultsCount = 0                  //自分を含め前後何件取得するか
+            MaxResultsCount = 1                  //自分を含め前後何件取得するか
         };
 
         //自分の順位周辺のランキング(リーダーボード)を取得
@@ -137,7 +137,7 @@ public class GetRanking : MonoBehaviour
         else
         {
             Debug.LogWarning("ランキングデータがありません。");
-            _myRankText.text = "ランキングデータがありません。";
+            _myRankText.text = "読み込みに失敗しました．";
         }
     }
 

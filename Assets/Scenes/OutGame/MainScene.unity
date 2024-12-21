@@ -158,7 +158,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 170, y: -175}
+  m_AnchoredPosition: {x: 130, y: -138}
   m_SizeDelta: {x: 75, y: 79}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &75964761
@@ -204,7 +204,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 75964762}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 75964764}
+        m_TargetAssemblyTypeName: LoadScene, Assembly-CSharp
+        m_MethodName: SceneLoad
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &75964762
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -255,7 +267,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc9dbad069b6c4f0ea67ef7152dd6fdf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneName: 
+  sceneName: SettingScene
   fade: {fileID: 1665141545}
   isFadeOut: 0
   fadeTime: 0.5
