@@ -10,12 +10,14 @@ public class GetRanking : MonoBehaviour
     [SerializeField] private TextMeshProUGUI[] _rankTexts;
     [SerializeField] private TextMeshProUGUI[] _userNameTexts;
     [SerializeField] private TextMeshProUGUI[] _userScoreTexts;
+    [SerializeField] private TextMeshProUGUI _myRankText;
     
     private int[] _getRanks = new int[200];
     private string[] _getNames = new string[200];
     private int[] _getScores = new int[200];
     private int _startRank = 0;
     private int _index = 0;
+    private int _rankLength = 0;
     
     // 1位〜3位の画像
     [SerializeField] private Image _goldImage;
@@ -71,6 +73,7 @@ public class GetRanking : MonoBehaviour
                 _getNames[index] = displayName;
                 _getScores[index] = item.StatValue;
                 index++;
+                _rankLength++;
                 
                 Debug.Log($"{item.Position + 1}位:{displayName} " + $"スコア {item.StatValue}");
             }
@@ -103,7 +106,45 @@ public class GetRanking : MonoBehaviour
             }
             i++;
         }
+        GetLeaderboardAroundPlayer();   // 自分の順位を取得
         _index = 0;
+    }
+    
+    public void GetLeaderboardAroundPlayer() { 
+        //GetLeaderboardAroundPlayerRequestのインスタンスを生成
+        var request = new GetLeaderboardAroundPlayerRequest{
+            StatisticName   = "JobRanking", //ランキング名(統計情報名)
+            MaxResultsCount = 0                  //自分を含め前後何件取得するか
+        };
+
+        //自分の順位周辺のランキング(リーダーボード)を取得
+        Debug.Log($"自分の順位周辺のランキング(リーダーボード)の取得開始");
+        PlayFabClientAPI.GetLeaderboardAroundPlayer(request, OnGetLeaderboardAroundPlayerSuccess, OnGetLeaderboardAroundPlayerFailure);
+    }
+  
+// 自分の順位周辺のランキング(リーダーボード)の取得成功
+    private void OnGetLeaderboardAroundPlayerSuccess(GetLeaderboardAroundPlayerResult result)
+    {
+        Debug.Log($"自分の順位周辺のランキング(リーダーボード)の取得に成功しました");
+
+        if (result.Leaderboard != null && result.Leaderboard.Count > 0)
+        {
+            // 自分の順位情報を取得 (Leaderboard の最初のエントリが自分)
+            var entry = result.Leaderboard[0];
+            _myRankText.text = $"あなたの順位 : {entry.Position + 1}位/{_rankLength}位"; // Position は 0 始まりのため +1
+            Debug.Log($"あなたの順位 : {entry.Position + 1}位/{_rankLength}位");
+        }
+        else
+        {
+            Debug.LogWarning("ランキングデータがありません。");
+            _myRankText.text = "ランキングデータがありません。";
+        }
+    }
+
+
+    //自分の順位周辺のランキング(リーダーボード)の取得失敗
+    private void OnGetLeaderboardAroundPlayerFailure(PlayFabError error){
+        Debug.LogError($"自分の順位周辺のランキング(リーダーボード)の取得に失敗しました\n{error.GenerateErrorReport()}");
     }
 
     public void ShowNextRank()  // 次の50位を表示
