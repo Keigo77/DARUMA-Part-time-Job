@@ -25,7 +25,7 @@ public class GameManager : MonoBehaviour
     public static float score = 0.0f;
     public static int highScore = 0;
     public int combo { get; set; } = 0;
-    private int _darumaCount = 0;       // 一定数ダルマを作ったならキメラダルマを登場させる，だるまの色を変える
+    public static int _darumaCount = 0;       // 一定数ダルマを作ったならキメラダルマを登場させる，だるまの色を変える
     
     // UniTask
     private CancellationTokenSource _cancellationTokenSource;
@@ -37,6 +37,9 @@ public class GameManager : MonoBehaviour
     async void Start()
     {
         _cancellationTokenSource = new CancellationTokenSource();
+        score = 0.0f;   // ここで毎回スコアをリセット
+        _darumaCount = 0;       // だるまの合計を取得
+        
         try
         {
             await UniTask.WaitUntil(() => TimeManagerScript.isGameStart, PlayerLoopTiming.Update, _cancellationTokenSource.Token);
@@ -48,14 +51,25 @@ public class GameManager : MonoBehaviour
         AppearDaruma();
     }
 
+      //-------------------PC対応のコード-----------------------
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.LeftArrow) || (Input.GetKeyDown(KeyCode.A)))    ButtonClick(0);
+        else if (Input.GetKeyDown(KeyCode.RightArrow) || (Input.GetKeyDown(KeyCode.D)))    ButtonClick(1);
+        else if (Input.GetKeyDown(KeyCode.UpArrow)|| (Input.GetKeyDown(KeyCode.W)))    ButtonClick(2);
+        else if (Input.GetKeyDown(KeyCode.DownArrow)|| (Input.GetKeyDown(KeyCode.S)))    ButtonClick(3);
+    }
+    
+
     public void AppearDaruma()     // ダルマを出現させる 
     {
         if (TimeManagerScript.isGameFinish || !TimeManagerScript.isGameStart) return;     // ゲーム中でないなら早期リターン
         
         int _kind = _darumaCount % 3;
-        if (_darumaCount >= 20) 
+        if (score >= 52000) 
             _daruma = Instantiate(_c3DarumaPrefabs[_kind], new Vector3(0.0f, _yPosition, 0.0f), Quaternion.identity);
-        else if (_darumaCount >= 10)
+        else
+        if (score >= 29000)
             _daruma = Instantiate(_c2DarumaPrefabs[_kind], new Vector3(0.0f, _yPosition, 0.0f), Quaternion.identity);
         else 
             _daruma = Instantiate(_normalDarumaPrefabs[_kind], new Vector3(0.0f, _yPosition, 0.0f), Quaternion.identity);
@@ -82,7 +96,8 @@ public class GameManager : MonoBehaviour
         GameManager.score += score;
         combo++;
         _comboText.text = combo.ToString() + "\nCombo!";
-        Debug.Log("倍率：" + (combo * 0.01f + 1.0f));
+        Debug.Log("倍率：" + (combo * 0.1f + 1.0f));
+        Debug.Log(GameManager.score);
     }
 
     private void OnDisable()

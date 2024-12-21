@@ -71,11 +71,11 @@ public class PanelController : MonoBehaviour
 
     public void QuitButtonClicked()     // あとでメインシーンの名前にする！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        SceneManager.LoadScene("MainScene");
     }
 
     private void OnDisable()
     {
-        //_cancellationTokenSource.Cancel();
+        _cancellationTokenSource.Cancel();
     }
 }

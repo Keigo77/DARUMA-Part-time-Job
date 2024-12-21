@@ -55,8 +55,6 @@ public class ShowResult : MonoBehaviour
             PlayerPrefs.SetInt("HighScore", GameManager.highScore);
             _highScoreText.enabled = true;
         }
-        GameManager.score = 0;      // 今回のスコアはリセット
-        
         _skipButton.SetActive(false);       // スキップボタンを消す
         _retryButton.interactable = true;   // 画面遷移を許可
         _backButton.interactable = true;
