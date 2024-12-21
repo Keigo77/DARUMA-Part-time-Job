@@ -14,11 +14,14 @@ public class ShowResult : MonoBehaviour
     [SerializeField] private GameObject _skipButton;
     [SerializeField] private Button _retryButton;
     [SerializeField] private Button _backButton;
+    [SerializeField] private AudioClip _resultSound;
+    [SerializeField] private AudioClip _showScoreSound;
     private Tween _tween;
     
     // Start is called before the first frame update
     void Start()
     {
+        SESingleton.seInstance.PlaySE(_resultSound);
         _highScoreText.enabled = false;
         _retryButton.interactable = false;
         _backButton.interactable = false;
@@ -37,6 +40,7 @@ public class ShowResult : MonoBehaviour
             GameManager.score / 12000 // アニメーション時間
         ).OnComplete(() =>
         {
+            SESingleton.seInstance.PlaySE(_showScoreSound);
             CheckHighScore();
         });
     }

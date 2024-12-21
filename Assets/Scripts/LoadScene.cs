@@ -24,6 +24,17 @@ public class LoadScene : MonoBehaviour
     
     public void SceneLoad()
     {
+        SESingleton.seInstance.PlayPushDecideButtonSound();   // 音を鳴らしてシーン遷移
+        fade.FadeIn(fadeTime,() =>
+        {
+            SceneManager.LoadScene(sceneName);
+        });
+
+    }
+    
+    public void BackSceneLoad()
+    {
+        SESingleton.seInstance.PlayPushCancellButtonSound();   // 音を鳴らしてシーン遷移
         fade.FadeIn(fadeTime,() =>
         {
             SceneManager.LoadScene(sceneName);

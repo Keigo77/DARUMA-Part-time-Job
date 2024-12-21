@@ -11,11 +11,13 @@ public class DarumaController : MonoBehaviour
     [SerializeField] private int _scoreBasis = 50;
     
     GameManager GameManagerScript = null;
+    private SESingleton seInstance;
     
     // Start is called before the first frame update
     void Start()
     {
         DeleteEye(_howDelete);
+        this.seInstance = SESingleton.seInstance;
     }
 
     public void DeleteEye(int howDelete)    // ランダムで選ばれた片方の目を削除する
@@ -31,6 +33,7 @@ public class DarumaController : MonoBehaviour
     public void ButtonClick(int directionNum)
     {
         if (_eyeSpritesList.Length <= directionNum) return;     // 2つ目だるまの時に上下ボタンを押したら早期return
+        seInstance.PlayWriteSE();  // 書く効果音
         if (!_eyeSpritesList[directionNum].enabled)
         {
             // 加点
@@ -39,8 +42,9 @@ public class DarumaController : MonoBehaviour
         }
         else
         {
-            _eyeTransformList[directionNum].localScale *= 1.1f;
+            _eyeTransformList[directionNum].localScale *= 1.1f;    // ミスしたら目を大きくする，コンボリセット，ミス効果音
             GameManagerScript.ResetCombo();
+            this.seInstance.PlayMissSE();
         }
     }
 
@@ -51,11 +55,12 @@ public class DarumaController : MonoBehaviour
         {
             if (!_eyeSpritesList[i].enabled) isCompeteEye = false;
         }
-        if (isCompeteEye)       // もしだるまが完成したら加点，破壊，新しいのを出現
+        if (isCompeteEye)       // もしだるまが完成したら加点，破壊，新しいのを出現．さらに完成した効果音
         {
+            this.seInstance.PlayCompleteSE();
             GameManagerScript.AddScoreCombo(_scoreBasis * (GameManagerScript.combo * 0.01f + 1.0f));
-            Destroy(this.gameObject);
             GameManagerScript.AppearDaruma();
+            Destroy(this.gameObject);
         }
     }
 

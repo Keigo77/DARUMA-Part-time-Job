@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6152571638224769873}
   - component: {fileID: 761431122603001289}
   m_Layer: 5
-  m_Name: ScoreText (1)
+  m_Name: ScoreText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -65,7 +65,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 500000
+  m_text: "\u8AAD\u307F\u8FBC\u307F\u4E2D..."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d38b9b1fd6c574009bc487362549668d, type: 2}
   m_sharedMaterial: {fileID: -6028241941622108529, guid: d38b9b1fd6c574009bc487362549668d, type: 2}
@@ -146,7 +146,7 @@ GameObject:
   - component: {fileID: 8277419562417578184}
   - component: {fileID: 4131536544922305872}
   m_Layer: 5
-  m_Name: PlayerName (1)
+  m_Name: PlayerName
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -199,7 +199,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u3042\u304B\u3055\u305F\u306A"
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d38b9b1fd6c574009bc487362549668d, type: 2}
   m_sharedMaterial: {fileID: -6028241941622108529, guid: d38b9b1fd6c574009bc487362549668d, type: 2}
@@ -333,7 +333,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 4
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e21d9fa883341484f8393b51730ca170, type: 2}
   m_sharedMaterial: {fileID: -4918373443893110478, guid: e21d9fa883341484f8393b51730ca170, type: 2}

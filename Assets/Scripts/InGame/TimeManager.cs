@@ -15,12 +15,16 @@ public class TimeManager : MonoBehaviour
     [SerializeField] private float _time = 31.0f;
     
     // カウントダウン
-    private float _countDownTime = 4.0f;
+    private float _countDownTime = 4.02f;
     [SerializeField] private TextMeshProUGUI _countDownText; 
     [SerializeField] private PanelController PanelControllerScript;
     
     public bool isGameStart { get; set; } = false;
     public bool isGameFinish { get; set; } = false;
+    
+    // 音楽
+    [SerializeField] private AudioClip _startSE;
+    [SerializeField] private AudioClip _finishSE;
     
     // Start is called before the first frame update
     void Start()
@@ -39,6 +43,7 @@ public class TimeManager : MonoBehaviour
         } else if (!isGameStart && _countDownTime <= 1)
         {
             PanelControllerScript.DeleteStartPanel();
+            SESingleton.seInstance.PlaySE(_startSE);
             isGameStart = true;
         }
 
@@ -51,6 +56,7 @@ public class TimeManager : MonoBehaviour
         if (_time < 1.0f)
         {
             isGameFinish = true;
+            SESingleton.seInstance.PlaySE(_finishSE);
             PanelControllerScript.ShowFinishPanel();
         }
     }

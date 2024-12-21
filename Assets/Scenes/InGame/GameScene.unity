@@ -156,8 +156,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 5.1967, y: 143}
-  m_SizeDelta: {x: 517.0012, y: 164.3282}
+  m_AnchoredPosition: {x: 14.5147, y: 143}
+  m_SizeDelta: {x: 607.6496, y: 164.3282}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &108744922
 MonoBehaviour:
@@ -179,10 +179,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Pause!
+  m_text: "\u96E2\u5E2D\u4E2D..."
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: e21d9fa883341484f8393b51730ca170, type: 2}
-  m_sharedMaterial: {fileID: -4918373443893110478, guid: e21d9fa883341484f8393b51730ca170, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: d38b9b1fd6c574009bc487362549668d, type: 2}
+  m_sharedMaterial: {fileID: -6028241941622108529, guid: d38b9b1fd6c574009bc487362549668d, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -206,8 +206,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 130
-  m_fontSizeBase: 130
+  m_fontSize: 100
+  m_fontSizeBase: 100
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -580,7 +580,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.64705884, g: 0.7994413, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.64705884, b: 0.6570179, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -659,6 +659,8 @@ MonoBehaviour:
   _time: 31
   _countDownText: {fileID: 1154879455}
   PanelControllerScript: {fileID: 555697740}
+  _startSE: {fileID: 8300000, guid: af851232a88ea44118065d2843dc9349, type: 3}
+  _finishSE: {fileID: 8300000, guid: b0d15762c97d54e56a5cd265a9dc37a7, type: 3}
 --- !u!1 &482720496
 GameObject:
   m_ObjectHideFlags: 0
@@ -1497,8 +1499,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4283884253
-  m_fontColor: {r: 0.8683392, g: 0.8867924, b: 0.33882165, a: 1}
+    rgba: 4284481529
+  m_fontColor: {r: 0.9775944, g: 1, b: 0.3726415, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1632,7 +1634,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.64705884, g: 0.7994413, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.64705884, b: 0.6570179, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1907,8 +1909,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -100
-  m_Sprite: {fileID: 21300000, guid: 01c7869e903a14368a05f98ec906b265, type: 3}
-  m_Color: {r: 0.5471698, g: 0.5471698, b: 0.5471698, a: 0.72156864}
+  m_Sprite: {fileID: 21300000, guid: fa5d294268f0b4fd7b8086f83162bb4d, type: 3}
+  m_Color: {r: 0.8018868, g: 0.8018868, b: 0.8018868, a: 0.7607843}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1927,8 +1929,8 @@ Transform:
   m_GameObject: {fileID: 1263779967}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.02, z: 0}
-  m_LocalScale: {x: 1.1247803, y: 3.2936018, z: 0.8909151}
+  m_LocalPosition: {x: 0.42, y: -0.08, z: 0}
+  m_LocalScale: {x: 1.2341089, y: 1.5177708, z: 0.97751206}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -1990,7 +1992,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u696D\u52D9\u7D42\u4E86"
+  m_text: "\u304A\u308F\u308A"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d38b9b1fd6c574009bc487362549668d, type: 2}
   m_sharedMaterial: {fileID: -6028241941622108529, guid: d38b9b1fd6c574009bc487362549668d, type: 2}
@@ -1999,8 +2001,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4286248437
-  m_fontColor: {r: 0.9622642, g: 0.96090996, b: 0.4765931, a: 1}
+    rgba: 4294934217
+  m_fontColor: {r: 0.78892136, g: 0.495283, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -2894,7 +2896,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.7783019, g: 0.8301887, b: 1, a: 1}
+  m_Color: {r: 0.64705884, g: 0.7562545, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -2927,6 +2929,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 272399496}
     m_Modifications:
+    - target: {fileID: 1928397071804535045, guid: 63274103071b144c89525bfc726ad113, type: 3}
+      propertyPath: m_RaycastPadding.y
+      value: -15
+      objectReference: {fileID: 0}
     - target: {fileID: 1997150458703161662, guid: 63274103071b144c89525bfc726ad113, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 1
@@ -2949,7 +2955,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1997150458703161662, guid: 63274103071b144c89525bfc726ad113, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SceneLoad
+      value: BackSceneLoad
       objectReference: {fileID: 0}
     - target: {fileID: 1997150458703161662, guid: 63274103071b144c89525bfc726ad113, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
@@ -3175,6 +3181,18 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 555697740}
+    - target: {fileID: 7688127892839477085, guid: d31154acc47ad4aec8b457397f455f99, type: 3}
+      propertyPath: m_Color.b
+      value: 0.740566
+      objectReference: {fileID: 0}
+    - target: {fileID: 7688127892839477085, guid: d31154acc47ad4aec8b457397f455f99, type: 3}
+      propertyPath: m_Color.g
+      value: 0.86949176
+      objectReference: {fileID: 0}
+    - target: {fileID: 7688127892839477085, guid: d31154acc47ad4aec8b457397f455f99, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
