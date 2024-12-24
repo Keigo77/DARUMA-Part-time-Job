@@ -14,7 +14,7 @@ public class BGMandSettingSingleton : MonoBehaviour
     [SerializeField] private AudioClip _playingSound;
     
     private AudioSource _audioSource;
-    public int framelate { get; set; } = 60;
+    
     private ReactiveProperty<string> nowSceneName = new ReactiveProperty<string>("MainScene");
 
     private void Awake()
@@ -35,10 +35,12 @@ public class BGMandSettingSingleton : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if (ES3.KeyExists("Framerate")) Application.targetFrameRate = ES3.Load<int>("Framerate");   // 初期のフレームレートは60
+        else Application.targetFrameRate = 60;
+        
         nowSceneName.Subscribe(nowSceneName=> ChangeSound(nowSceneName));
         _audioSource.clip = _mainSound;
         _audioSource.Play();
-        Application.targetFrameRate = framelate;
     }
 
     void Update()

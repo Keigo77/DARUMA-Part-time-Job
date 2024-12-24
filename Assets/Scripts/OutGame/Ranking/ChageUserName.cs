@@ -42,8 +42,11 @@ public class ChangeUserName : MonoBehaviour {
     void Start()
     {
         _DeletePanelButton.SetActive(false);
-        if (ES3.KeyExists("PlayerName")) _inputField.text = ES3.Load<string>("PlayerName");
-        else _nameRegisterPanel.SetActive(true);
+        if (ES3.KeyExists("PlayerName"))    // 名前を保存済みなら，設定画面を表示(最初は強制的に名前を登録させる)
+        {
+            _nameRegisterPanel.SetActive(false);
+            _inputField.text = ES3.Load<string>("PlayerName");
+        }
         PlayFabAuthService.Instance.Authenticate(Authtypes.Silent);
     }
     
@@ -90,7 +93,13 @@ public class ChangeUserName : MonoBehaviour {
 
     public void DeleteInputNamePanel()
     {
+        _DeletePanelButton.SetActive(false);
         _nameRegisterPanel.SetActive(false);
+    }
+
+    public void ShowNameRegisterPanel()
+    {
+        _nameRegisterPanel.SetActive(true);
     }
 
 }

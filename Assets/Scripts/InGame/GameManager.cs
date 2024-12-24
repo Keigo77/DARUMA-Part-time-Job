@@ -22,6 +22,7 @@ public class GameManager : MonoBehaviour
     
     // スコア系
     [SerializeField] private TextMeshProUGUI _comboText;
+    [SerializeField] private TextMeshProUGUI _text;
     public static float score = 0.0f;
     public static int highScore = 0;
     public int combo { get; set; } = 0;
@@ -88,14 +89,16 @@ public class GameManager : MonoBehaviour
     public void ResetCombo()
     {
         combo = 0;
-        _comboText.text = combo.ToString() + "\nCombo!";
+        _comboText.text = combo.ToString();
+        _text.text = "こんぼ！";
     }
 
     public void AddScoreCombo(float score)       // ダルマ側で実行される
     {
         GameManager.score += score;
         combo++;
-        _comboText.text = combo.ToString() + "\nCombo!";
+        _comboText.text = combo.ToString();
+        _text.text = "こんぼ！";
         Debug.Log("倍率：" + (combo * 0.1f + 1.0f));
         Debug.Log(GameManager.score);
     }
