@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/Scenes/OutGame/MainScene.unity
     guid: b71e8beb71aa947e9ab766bc76cfa3a2
   - enabled: 1
+    path: Assets/Scenes/OutGame/TutorialScene.unity
+    guid: 86cdce48b7a5d4080bb7c1a78b077c6e
+  - enabled: 1
     path: Assets/Scenes/InGame/GameScene.unity
     guid: b6415d02b51d2450bac0c79b4c7ae3e5
   - enabled: 1

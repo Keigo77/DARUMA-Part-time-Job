@@ -2,10 +2,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using PlayFab;
 using PlayFab.ClientModels;
+using TMPro;
 
 
 public class SendScore : MonoBehaviour
 {
+    [SerializeField] private TextMeshProUGUI _errorText;
+    
     private void OnEnable()
     {
         PlayFabAuthService.OnLoginSuccess += PlayFabAuthService_OnLoginSuccess;
@@ -27,6 +30,7 @@ public class SendScore : MonoBehaviour
     private void PlayFabAuthService_OnPlayFabError(PlayFabError error)
     {
         Debug.Log("ログイン失敗");
+        _errorText.text = "ハイスコアの送信ができませんでした．\n次回プレイ時に再度送信を行います．";
         Debug.Log(error.ToString());    // 原因など
     }
 
@@ -34,8 +38,7 @@ public class SendScore : MonoBehaviour
     
     void Start()
     {
-        PlayerPrefs.SetInt("DarumaCount", (GameManager._darumaCount + PlayerPrefs.GetInt("DarumaCount")));  // ダルマを完成させた数を合計して保存
-        PlayerPrefs.SetInt("HighScore", (int)GameManager.score);
+        ES3.Save<int>("DarumaCount", (GameManager._darumaCount + ES3.Load<int>("DarumaCount")));  // ダルマを完成させた数を合計して保存
         PlayFabAuthService.Instance.Authenticate(Authtypes.Silent);
     }
     
@@ -49,14 +52,15 @@ public class SendScore : MonoBehaviour
                 new StatisticUpdate
                 {
                     StatisticName = "JobRanking",
-                    Value = PlayerPrefs.GetInt("HighScore")
+                    Value = ES3.Load<int>("HighScore")
                 }
             }
         }, result =>
         {
-            Debug.Log($"スコア {PlayerPrefs.GetInt("HighScore")} 送信完了！");
+            Debug.Log($"スコア {ES3.Load<int>("HighScore")} 送信完了！");
         }, error =>
         {
+            _errorText.text = "ハイスコアの送信ができませんでした．\n次回プレイ時に再度送信を行います．";
             Debug.Log(error.GenerateErrorReport());
         });
     }
@@ -70,12 +74,12 @@ public class SendScore : MonoBehaviour
                 new StatisticUpdate
                 {
                     StatisticName = "SumDarumaCount",
-                    Value = PlayerPrefs.GetInt("DarumaCount")
+                    Value = ES3.Load<int>("DarumaCount")
                 }
             }
         }, result =>
         {
-            Debug.Log($"だるまの合計 {PlayerPrefs.GetInt("DarumaCount")} 送信完了！");
+            Debug.Log($"だるまの合計 {ES3.Load<int>("DarumaCount")} 送信完了！");
         }, error =>
         {
             Debug.Log(error.GenerateErrorReport());

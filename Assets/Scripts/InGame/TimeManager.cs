@@ -66,10 +66,11 @@ public class TimeManager : MonoBehaviour
     
     private void CheckHighScore()
     {
-        if (PlayerPrefs.GetInt("HighScore") < (int)GameManager.score)
+        if (ES3.Load<int>("HighScore") < (int)GameManager.score)
         {
             isHighScore = true;
-            PlayerPrefs.SetInt("HighScore", (int)GameManager.score);
+            ES3.Save<int>("HighScore", (int)GameManager.score);
         }
+        
     }
 }

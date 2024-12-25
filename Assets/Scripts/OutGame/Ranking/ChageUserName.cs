@@ -1,10 +1,14 @@
+using System;
 using System.Collections.Generic;
+using System.Threading;
 using PlayFab;
 using PlayFab.ClientModels;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
+using Cysharp.Threading.Tasks;
+using Unity.VisualScripting;
 
 /// <summary>
 /// ランキングのサンプル
@@ -16,9 +20,12 @@ public class ChangeUserName : MonoBehaviour {
     [SerializeField] private TextMeshProUGUI _text;
     [SerializeField] private GameObject _nameRegisterPanel;
     private bool isSuccessLogin = false;
+    // UniTask
+    private CancellationTokenSource _cancellationTokenSource;
 
     private void OnEnable()
     {
+        _cancellationTokenSource = new CancellationTokenSource();
         PlayFabAuthService.OnLoginSuccess += PlayFabAuthService_OnLoginSuccess;
         PlayFabAuthService.OnPlayFabError += PlayFabAuthService_OnPlayFabError;
     }
@@ -48,14 +55,24 @@ public class ChangeUserName : MonoBehaviour {
             _nameRegisterPanel.SetActive(false);
             _inputField.text = ES3.Load<string>("PlayerName");
         }
-        PlayFabAuthService.Instance.Authenticate(Authtypes.Silent);
     }
     
-    public void UpdateUserName()
+    public async void UpdateUserName()
     {
+        PlayFabAuthService.Instance.Authenticate(Authtypes.Silent);
+        _text.text = "処理中...";
+        try
+        {
+            await UniTask.Delay(TimeSpan.FromSeconds(2.0f), cancellationToken: _cancellationTokenSource.Token);
+        }
+        catch
+        {
+            Debug.Log("キャンセル");
+        }
+        
         if (!isSuccessLogin)
         {
-            _text.text = "ネットワークに接続できませんでした．\n設定画面から再度設定してください．";
+            _text.text = "名前の変更に失敗しました．通信環境を整えて，再度お試しください．";
             _deletePanelButton.SetActive(true);
             return;    // ログインできていないならエラー
         }
@@ -64,7 +81,7 @@ public class ChangeUserName : MonoBehaviour {
         if (_inputField.text.Length > 10 || _inputField.text.Length <= 0)       // ユーザー名が10文字より長いなら中止
         {
             // エラー表示
-            _text.text = "文字数が10文字以上か，入力されていません．\n設定画面から再度設定してください．";
+            _text.text = "文字数が10文字以上か，入力されていません．\n入力し直して，再度お試しください．";
             return;
         }
         
@@ -89,12 +106,13 @@ public class ChangeUserName : MonoBehaviour {
     //ユーザ名の更新失敗
     private void OnUpdateUserNameFailure(PlayFabError error)
     {
-        _text.text = "ユーザ名の更新に失敗しました．\n設定画面から再度設定してください．";
+        _text.text = "ユーザ名の更新に失敗しました．\n通信環境を整えて，再度お試しください．";
         Debug.LogError($"ユーザ名の更新に失敗しました\n{error.GenerateErrorReport()}");
     }
 
     public void DeleteInputNamePanel()
     {
+        _text.text = "";
         _deletePanelButton.SetActive(false);
         _nameRegisterPanel.SetActive(false);
     }
@@ -104,4 +122,8 @@ public class ChangeUserName : MonoBehaviour {
         _nameRegisterPanel.SetActive(true);
     }
 
+    private void OnDestroy()
+    {
+        _cancellationTokenSource.Cancel();
+    }
 }

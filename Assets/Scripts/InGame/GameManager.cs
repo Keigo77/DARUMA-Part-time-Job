@@ -88,8 +88,9 @@ public class GameManager : MonoBehaviour
     public void ResetCombo()
     {
         combo = 0;
-        _comboText.text = combo.ToString();
-        _text.text = "こんぼ！";
+        _comboText.text = "";
+        _text.text = "";
+        GameManager.score -= 1500;  // 連打防止のため，ミスしたら原点
     }
 
     public void AddScoreCombo(float score)       // ダルマ側で実行される
