@@ -53,12 +53,7 @@ public class ShowResult : MonoBehaviour
 
     private void CheckHighScore()
     {
-        if (PlayerPrefs.GetInt("HighScore") < (int)GameManager.score)
-        {
-            GameManager.highScore = (int)GameManager.score;
-            PlayerPrefs.SetInt("HighScore", GameManager.highScore);
-            _highScoreText.enabled = true;
-        }
+        if (TimeManager.isHighScore) _highScoreText.enabled = true;
         _skipButton.SetActive(false);       // スキップボタンを消す
         _retryButton.interactable = true;   // 画面遷移を許可
         _backButton.interactable = true;

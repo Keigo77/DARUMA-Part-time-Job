@@ -24,7 +24,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _comboText;
     [SerializeField] private TextMeshProUGUI _text;
     public static float score = 0.0f;
-    public static int highScore = 0;
     public int combo { get; set; } = 0;
     public static int _darumaCount = 0;       // 一定数ダルマを作ったならキメラダルマを登場させる，だるまの色を変える
     

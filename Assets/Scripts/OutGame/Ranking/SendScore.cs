@@ -34,7 +34,7 @@ public class SendScore : MonoBehaviour
     void Start()
     {
         PlayerPrefs.SetInt("DarumaCount", (GameManager._darumaCount + PlayerPrefs.GetInt("DarumaCount")));  // ダルマを完成させた数を合計して保存
-        PlayerPrefs.SetInt("HighScore", (int)GameManager.highScore);
+        PlayerPrefs.SetInt("HighScore", (int)GameManager.score);
         PlayFabAuthService.Instance.Authenticate(Authtypes.Silent);
     }
     
@@ -48,12 +48,12 @@ public class SendScore : MonoBehaviour
                 new StatisticUpdate
                 {
                     StatisticName = "JobRanking",
-                    Value = GameManager.highScore
+                    Value = PlayerPrefs.GetInt("HighScore")
                 }
             }
         }, result =>
         {
-            Debug.Log($"スコア {GameManager.highScore} 送信完了！");
+            Debug.Log($"スコア {PlayerPrefs.GetInt("HighScore")} 送信完了！");
         }, error =>
         {
             Debug.Log(error.GenerateErrorReport());

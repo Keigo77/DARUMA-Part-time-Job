@@ -21,6 +21,7 @@ public class TimeManager : MonoBehaviour
     
     public bool isGameStart { get; set; } = false;
     public bool isGameFinish { get; set; } = false;
+    public static bool isHighScore = false;
     
     // 音楽
     [SerializeField] private AudioClip _startSE;
@@ -29,6 +30,7 @@ public class TimeManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        isHighScore = false;
         _timeText.text = (_time - 1.0f).ToString();           // 時間をテキストに反映
         _countDownText.text = ((int)_countDownTime).ToString();
     }
@@ -56,8 +58,18 @@ public class TimeManager : MonoBehaviour
         if (_time < 1.0f)
         {
             isGameFinish = true;
+            CheckHighScore();
             SESingleton.seInstance.PlaySE(_finishSE);
             PanelControllerScript.ShowFinishPanel();
+        }
+    }
+    
+    private void CheckHighScore()
+    {
+        if (PlayerPrefs.GetInt("HighScore") < (int)GameManager.score)
+        {
+            isHighScore = true;
+            PlayerPrefs.SetInt("HighScore", (int)GameManager.score);
         }
     }
 }
