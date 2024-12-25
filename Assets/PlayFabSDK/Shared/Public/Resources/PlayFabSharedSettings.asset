@@ -15,7 +15,7 @@ MonoBehaviour:
   TitleId: D8051
   DeveloperSecretKey: SSWS6BCMUJFGMNR6GCOS99G74GMNTXHJ43ARCPZBTCNWUY5TXF
   ProductionEnvironmentUrl: 
-  RequestType: 2
+  RequestType: 0
   DisableDeviceInfo: 0
   DisableFocusTimeCollection: 0
   RequestTimeout: 2000

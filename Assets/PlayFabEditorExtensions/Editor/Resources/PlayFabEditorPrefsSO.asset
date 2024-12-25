@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: PlayFabEditorPrefsSO
   m_EditorClassIdentifier: 
   DevAccountEmail: kake32059kig@gmail.com
-  DevAccountToken: jf5fr1wjcy8fwz5p53ps9buqg648jwiaac3hzinntxq3zn619a5xebphqh9oiszzfp5pcuzzo3f7hfqy7s9gn8ru9prjfg8wyu4wfeip73qhuh87ge76yhif1s6nzhwexjgcb5xzbgijfp8sxcfk418ijaj8arjr9zofx8tiw4zys1zf4je9oocy7s6sfko76baz3ftf
+  DevAccountToken: 9rzt3ydj9oqep8ytakwr1649r76u6hk71g4wyum9wzpuspb775godx434qnr85kcdimx948ubknommxne1tyerm64ufmii4h4noyq3ryhukc8s86e319m5b157u5b4z5q3xqkrc7b9onhdsp6x5qz7cju9e4doqrepxptcw7mqn5ortjpbc1s9ccirx8z93k5azbjec5
   AadAuthorization: 
   SelectedStudio: KKG.App
   SdkPath: Assets/PlayFabSDK
   EdExPath: 
   LocalCloudScriptPath: 
   PanelIsShown: 0
-  curMainMenuIdx: 1
-  curSubMenuIdx: 2
+  curMainMenuIdx: 3
+  curSubMenuIdx: 0

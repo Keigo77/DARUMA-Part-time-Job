@@ -4,6 +4,7 @@ using PlayFab.ClientModels;
 using PlayFab;
 using TMPro;
 using UnityEngine.UI;
+using Cysharp.Threading.Tasks;
 
 public class GetRanking : MonoBehaviour
 {
@@ -11,6 +12,9 @@ public class GetRanking : MonoBehaviour
     [SerializeField] private TextMeshProUGUI[] _userNameTexts;
     [SerializeField] private TextMeshProUGUI[] _userScoreTexts;
     [SerializeField] private TextMeshProUGUI _myRankText;
+    [SerializeField] private GameObject _loadingPanel;
+    [SerializeField] private TextMeshProUGUI _loadingText;
+    [SerializeField] private GameObject _loadingDaruma;
     
     private int[] _getRanks = new int[200];
     private string[] _getNames = new string[200];
@@ -44,6 +48,8 @@ public class GetRanking : MonoBehaviour
     private void PlayFabAuthService_OnPlayFabError(PlayFabError error)
     {
         Debug.Log("ログイン失敗");
+        _loadingDaruma.SetActive(false);
+        _loadingText.text = "読み込みに失敗しました．\nインターネット接続などを確認してください．";
     }
     void Start()
     {
@@ -80,6 +86,8 @@ public class GetRanking : MonoBehaviour
             ShowRank(); // 取得したらテキストに反映
         }, error =>
         {
+            _loadingDaruma.SetActive(false);
+            _loadingText.text = "読み込みに失敗しました．\nインターネット接続などを確認してください．";
             Debug.Log(error.GenerateErrorReport());
         });
     }
@@ -133,11 +141,12 @@ public class GetRanking : MonoBehaviour
             var entry = result.Leaderboard[0];
             _myRankText.text = $"あなたの順位 : {entry.Position + 1}位/{_rankLength}位"; // Position は 0 始まりのため +1
             Debug.Log($"あなたの順位 : {entry.Position + 1}位/{_rankLength}位");
+            _loadingPanel.SetActive(false); // ここで初めてロードパネルを削除
         }
         else
         {
             Debug.LogWarning("ランキングデータがありません。");
-            _myRankText.text = "読み込みに失敗しました．";
+            _myRankText.text = "あなたのデータはありません．";
         }
     }
 

@@ -3,6 +3,7 @@ using PlayFab;
 using PlayFab.ClientModels;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 /// <summary>
@@ -11,7 +12,7 @@ using UnityEngine.UI;
 public class ChangeUserName : MonoBehaviour {
     
     [SerializeField] private InputField _inputField;
-    [SerializeField] private GameObject _DeletePanelButton;
+    [SerializeField] private GameObject _deletePanelButton;
     [SerializeField] private TextMeshProUGUI _text;
     [SerializeField] private GameObject _nameRegisterPanel;
     private bool isSuccessLogin = false;
@@ -41,7 +42,7 @@ public class ChangeUserName : MonoBehaviour {
     
     void Start()
     {
-        _DeletePanelButton.SetActive(false);
+        _deletePanelButton.SetActive(false);
         if (ES3.KeyExists("PlayerName"))    // 名前を保存済みなら，設定画面を表示(最初は強制的に名前を登録させる)
         {
             _nameRegisterPanel.SetActive(false);
@@ -55,10 +56,11 @@ public class ChangeUserName : MonoBehaviour {
         if (!isSuccessLogin)
         {
             _text.text = "ネットワークに接続できませんでした．\n設定画面から再度設定してください．";
+            _deletePanelButton.SetActive(true);
             return;    // ログインできていないならエラー
         }
         SESingleton.seInstance.PlayPushDecideButtonSound();
-        _DeletePanelButton.SetActive(true);
+        _deletePanelButton.SetActive(true);
         if (_inputField.text.Length > 10 || _inputField.text.Length <= 0)       // ユーザー名が10文字より長いなら中止
         {
             // エラー表示
@@ -93,7 +95,7 @@ public class ChangeUserName : MonoBehaviour {
 
     public void DeleteInputNamePanel()
     {
-        _DeletePanelButton.SetActive(false);
+        _deletePanelButton.SetActive(false);
         _nameRegisterPanel.SetActive(false);
     }
 
