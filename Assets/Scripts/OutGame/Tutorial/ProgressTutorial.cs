@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class ProgressTutorial : MonoBehaviour
 {
@@ -18,9 +19,13 @@ public class ProgressTutorial : MonoBehaviour
     private string[] _textLine;
     private int _materialProgress = 0;
     
+    // 戻るボタン
+    [SerializeField] private Button _backToMainButton; 
+    
     // Start is called before the first frame update
     void Start()
     {
+        if (!ES3.Load<bool>("IsFinishTutorial")) _backToMainButton.interactable = false;
         string textData = _textFile.text;
         _textLine = textData.Split('\n');
         
@@ -35,6 +40,11 @@ public class ProgressTutorial : MonoBehaviour
             if (_textProgress + 1 >= _textLine.Length) return;   // 範囲外アクセスになるなら早期リターン
             _textProgress++;
             _tutorialText.text = _textLine[_textProgress];
+            if (_textProgress == _textLine.Length - 1)
+            {
+                ES3.Save<bool>("IsFinishTutorial", true);
+                SceneManager.LoadScene("MainScene");
+            } 
             
             if (_textProgress + 1 >= _textLine.Length) _progressImage.enabled = false;
 
