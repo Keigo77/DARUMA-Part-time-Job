@@ -28,6 +28,7 @@ public class ExamManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _text;
     private float score = 0.0f;
     public int combo { get; set; } = 0;
+    private int maxCombo = 0;
     private int _darumaCount = 0;       // だるまの色を変える
     
     // UniTask
@@ -94,6 +95,7 @@ public class ExamManager : MonoBehaviour
 
     public void ResetCombo()
     {
+        maxCombo = Math.Max(maxCombo, combo);   // 最大コンボ数を保存
         combo = 0;
         _comboText.text = "";
         _text.text = "";
@@ -120,7 +122,7 @@ public class ExamManager : MonoBehaviour
     {
         switch (SelectExam.nowExamType)
         {
-            case SelectExam.ExamType.sudordinate when combo >= 50:
+            case SelectExam.ExamType.sudordinate when maxCombo >= 50:
                 ES3.Save<SelectExam.ExamType>("Role", SelectExam.ExamType.sudordinate);
                 return true;
             case SelectExam.ExamType.boss when score >= 80000:
@@ -129,10 +131,10 @@ public class ExamManager : MonoBehaviour
             case SelectExam.ExamType.leader when score >= 120000:
                 ES3.Save<SelectExam.ExamType>("Role", SelectExam.ExamType.leader);
                 return true;
-            case SelectExam.ExamType.president when combo >= 50:
+            case SelectExam.ExamType.president when maxCombo >= 50:
                 ES3.Save<SelectExam.ExamType>("Role", SelectExam.ExamType.president);
                 return true;
-            case SelectExam.ExamType.final when combo >= 100:
+            case SelectExam.ExamType.final when maxCombo >= 100:
                 ES3.Save<SelectExam.ExamType>("Role", SelectExam.ExamType.final);
                 return true;
             default:
