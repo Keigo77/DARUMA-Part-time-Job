@@ -7,9 +7,12 @@ using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
 using Cysharp.Threading.Tasks;
+using Random = UnityEngine.Random;
 
-public class GameManager : MonoBehaviour
+
+public class ExamManager : MonoBehaviour
 {
+    private SelectExam.ExamType examType;
     [SerializeField] private GameObject[]  _normalDarumaPrefabs;
     
     [SerializeField] private GameObject[] _c2DarumaPrefabs;     // 2つ目がないキメラだるま
@@ -23,23 +26,23 @@ public class GameManager : MonoBehaviour
     // スコア系
     [SerializeField] private TextMeshProUGUI _comboText;
     [SerializeField] private TextMeshProUGUI _text;
-    public static float score = 0.0f;
+    private float score = 0.0f;
     public int combo { get; set; } = 0;
-    public static int _darumaCount = 0;       // 一定数ダルマを作ったならキメラダルマを登場させる，だるまの色を変える
+    private int _darumaCount = 0;       // だるまの色を変える
     
     // UniTask
     private CancellationTokenSource _cancellationTokenSource;
     
     // ゲームが終わったかどうか
-    [SerializeField] private TimeManager TimeManagerScript;
+    [SerializeField] private ExamTimeManager TimeManagerScript;
+    // 試験
+    private SelectExam.ExamType _nowExamType;
     
     // Start is called before the first frame update
     async void Start()
     {
         _cancellationTokenSource = new CancellationTokenSource();
-        score = 0.0f;   // ここで毎回スコアをリセット
-        _darumaCount = 0;       // だるまの合計を取得
-        
+        _nowExamType = SelectExam.nowExamType;
         try
         {
             await UniTask.WaitUntil(() => TimeManagerScript.isGameStart, PlayerLoopTiming.Update, _cancellationTokenSource.Token);
@@ -66,12 +69,17 @@ public class GameManager : MonoBehaviour
         if (TimeManagerScript.isGameFinish || !TimeManagerScript.isGameStart) return;     // ゲーム中でないなら早期リターン
         
         int kind = _darumaCount % 3;
-        if (score >= 52000) 
+        int randomDaruma = Random.Range(0, 3);
+        
+        // 試験ごとに出現するだるまを限定する
+        if  (_nowExamType == SelectExam.ExamType.leader || 
+             ((_nowExamType == SelectExam.nowExamType || _nowExamType == SelectExam.ExamType.president) && score >= 52000))   // 部長試験か，社長，ボス試験の終盤はキメラだるま
             _daruma = Instantiate(_c3DarumaPrefabs[kind], new Vector3(0.0f, _yPosition, 0.0f), Quaternion.identity);
-        else
-        if (score >= 29000)
+        if  (_nowExamType == SelectExam.ExamType.boss || 
+            ((_nowExamType == SelectExam.nowExamType || _nowExamType == SelectExam.ExamType.president) && score >= 29000))   // 上司試験か，社長，ボス試験の中盤は2つ目キメラだるま
             _daruma = Instantiate(_c2DarumaPrefabs[kind], new Vector3(0.0f, _yPosition, 0.0f), Quaternion.identity);
-        else 
+        if (_nowExamType == SelectExam.ExamType.sudordinate || 
+            ((_nowExamType == SelectExam.nowExamType || _nowExamType == SelectExam.ExamType.president)))   // 部下試験か，社長，ボス試験で序盤はノーマルだるま
             _daruma = Instantiate(_normalDarumaPrefabs[kind], new Vector3(0.0f, _yPosition, 0.0f), Quaternion.identity);
         
         DarumaControllerScript = _daruma.GetComponent<DarumaController>();
@@ -89,7 +97,7 @@ public class GameManager : MonoBehaviour
         combo = 0;
         _comboText.text = "";
         _text.text = "";
-        GameManager.score -= 1500;  // 連打防止のため，ミスしたら原点
+        score -= 1500;  // 連打防止のため，ミスしたら原点
     }
 
     public void AddScoreCombo(float score)       // ダルマ側で実行される
@@ -106,5 +114,29 @@ public class GameManager : MonoBehaviour
     private void OnDisable()
     {
         _cancellationTokenSource.Cancel();
+    }
+
+    public bool CheckExam()    // 各試験項目ごとの合格基準を満たしているのか確認，合格ならそれを保存し，合格パネルを表示
+    {
+        switch (SelectExam.nowExamType)
+        {
+            case SelectExam.ExamType.sudordinate when combo >= 50:
+                ES3.Save<SelectExam.ExamType>("Role", SelectExam.ExamType.sudordinate);
+                return true;
+            case SelectExam.ExamType.boss when score >= 80000:
+                ES3.Save<SelectExam.ExamType>("Role", SelectExam.ExamType.boss);
+                return true;
+            case SelectExam.ExamType.leader when score >= 120000:
+                ES3.Save<SelectExam.ExamType>("Role", SelectExam.ExamType.leader);
+                return true;
+            case SelectExam.ExamType.president when combo >= 50:
+                ES3.Save<SelectExam.ExamType>("Role", SelectExam.ExamType.president);
+                return true;
+            case SelectExam.ExamType.final when combo >= 100:
+                ES3.Save<SelectExam.ExamType>("Role", SelectExam.ExamType.final);
+                return true;
+            default:
+                return false;
+        }
     }
 }

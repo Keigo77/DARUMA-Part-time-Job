@@ -7,7 +7,7 @@ public class CheckInitialUser : MonoBehaviour
 {
     public void CheckInitial()      // チュートリアルが終わっていないなら，名前登録後強制的にチュートリアルシーンに飛ばす
     {
-        if (!ES3.Load<bool>("IsFinishTutorial"))
+        if (!ES3.Load<bool>("IsFinishTutorial", defaultValue: false))
         {
             SceneManager.LoadScene("TutorialScene");
         }

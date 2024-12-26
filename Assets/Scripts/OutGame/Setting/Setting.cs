@@ -5,13 +5,14 @@ using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 
 public class Setting : MonoBehaviour
 {
     //　音量
-    [SerializeField] AudioMixer audioMixer;
-    [SerializeField] Slider bgmSlider;
-    [SerializeField] Slider seSlider;
+    [SerializeField] AudioMixer _audioMixer;
+    [SerializeField] Slider _bgmSlider;
+    [SerializeField] Slider _seSlider;
     [SerializeField] private TextMeshProUGUI _bgmVolumeText;
     [SerializeField] private TextMeshProUGUI _seVolumeText;
     
@@ -21,10 +22,13 @@ public class Setting : MonoBehaviour
     void Start()
     {
         //スライダーを動かした時の処理を登録
-        bgmSlider.onValueChanged.AddListener(SetAudioMixerBGM);
-        seSlider.onValueChanged.AddListener(SetAudioMixerSE);
-        if (ES3.KeyExists("Framerate"))  _framerateText.text = $"現在のフレームレート：{ES3.Load<int>("Framerate")}fps";  // フレームレートが設定されたことがあれば，それを表示
-        else _framerateText.text = "現在のフレームレート：60fps"; // 初期フレームレート
+        _bgmSlider.onValueChanged.AddListener(SetAudioMixerBGM);
+        _seSlider.onValueChanged.AddListener(SetAudioMixerSE);
+        _framerateText.text = $"現在のフレームレート：{ES3.Load<int>("Framerate", defaultValue: 60)}fps";  // フレームレートが設定されたことがあれば，それを表示
+        _bgmSlider.value = ES3.Load<float>("BGM", defaultValue: 10);
+        _seSlider.value = ES3.Load<float>("SE", defaultValue: 10);
+        _bgmVolumeText.text = _bgmSlider.value.ToString();
+        _seVolumeText.text = _seSlider.value.ToString();
     }
 
     //BGM
@@ -32,11 +36,12 @@ public class Setting : MonoBehaviour
     {
         // 10段階補正
         value /= 10;
-        _bgmVolumeText.text = bgmSlider.value.ToString();
-        // -80~0に変換
+        _bgmVolumeText.text = _bgmSlider.value.ToString();
+        ES3.Save<float>("BGM", _bgmSlider.value);
+        // -80~-3.0に変換
         var volume = Mathf.Clamp(Mathf.Log10(value) * 20f,-80f,-3.0f);
         // audioMixerに代入
-        audioMixer.SetFloat("BGM",volume);
+        _audioMixer.SetFloat("BGM",volume);
         Debug.Log($"BGM:{volume}");
     }
 
@@ -45,11 +50,12 @@ public class Setting : MonoBehaviour
     {
         // 10段階補正
         value /= 10;
-        _seVolumeText.text = _seVolumeText.text = bgmSlider.value.ToString();
+        _seVolumeText.text = _seSlider.value.ToString();
+        ES3.Save<float>("SE", _seSlider.value);
         //-80~0に変換
         var volume = Mathf.Clamp(Mathf.Log10(value) * 20f,-80f,0f);
         //audioMixerに代入
-        audioMixer.SetFloat("SE",volume);
+        _audioMixer.SetFloat("SE",volume);
         SESingleton.seInstance.PlayPushDecideButtonSound(); // 試しに音を鳴らす
         Debug.Log($"SE:{volume}");
     }

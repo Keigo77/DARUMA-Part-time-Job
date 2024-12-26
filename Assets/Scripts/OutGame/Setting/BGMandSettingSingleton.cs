@@ -5,6 +5,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UniRx;
+using UnityEngine.Audio;
 
 
 public class BGMandSettingSingleton : MonoBehaviour
@@ -12,6 +13,7 @@ public class BGMandSettingSingleton : MonoBehaviour
     public static BGMandSettingSingleton bgmInstance;  // シングルトン
     [SerializeField] private AudioClip _mainSound;
     [SerializeField] private AudioClip _playingSound;
+    [SerializeField] private AudioMixer _audioMixer;
     
     private AudioSource _audioSource;
     
@@ -24,6 +26,7 @@ public class BGMandSettingSingleton : MonoBehaviour
         if (bgmInstance == null)
         {
             bgmInstance = this;
+            _audioMixer.SetFloat("BGM", ES3.Load<float>("BGM", defaultValue: -3.0f));
             DontDestroyOnLoad(this.gameObject);
         }
         else
@@ -35,9 +38,9 @@ public class BGMandSettingSingleton : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (ES3.KeyExists("Framerate")) Application.targetFrameRate = ES3.Load<int>("Framerate");   // 初期のフレームレートは60
-        else Application.targetFrameRate = 60;
-        
+        Application.targetFrameRate = ES3.Load<int>("Framerate", defaultValue:60);   // 初期のフレームレートは60
+        float value = ES3.Load<float>("BGM", defaultValue: -3.0f) / 10.0f;  // bgmの設定
+        _audioMixer.SetFloat("BGM", Mathf.Clamp(Mathf.Log10(value) * 20f,-80f,-3.0f));
         nowSceneName.Subscribe(nowSceneName=> ChangeSound(nowSceneName));
         _audioSource.clip = _mainSound;
         _audioSource.Play();
@@ -61,6 +64,7 @@ public class BGMandSettingSingleton : MonoBehaviour
         else if (SceneName == "ResultScene")
         {
             _audioSource.Stop();
+            _audioSource.clip = null;
         } 
         else 
         {

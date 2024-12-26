@@ -42,7 +42,7 @@ public class GetSumDarumaCount : MonoBehaviour
     }
     void Start()
     {
-        _myCountText.text = $"あなたが完成させただるまの数：{ES3.Load<int>("DarumaCount")}個";
+        _myCountText.text = $"あなたが完成させただるまの数：{ES3.Load<int>("DarumaCount", defaultValue: 0)}個";
         PlayFabAuthService.Instance.Authenticate(Authtypes.Silent);
     }
 

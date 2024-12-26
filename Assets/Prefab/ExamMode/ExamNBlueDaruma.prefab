@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 2275267593362301308}
   - component: {fileID: 5294992968767283411}
-  - component: {fileID: 4832886007668632677}
+  - component: {fileID: -8086453833614930738}
   m_Layer: 0
-  m_Name: NBlueDaruma
+  m_Name: ExamNBlueDaruma
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -75,7 +75,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: b11ca35d824c4489e80aa851f3141b30, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -87,7 +87,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &4832886007668632677
+--- !u!114 &-8086453833614930738
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -96,7 +96,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2093446195665892461}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b87f0145cb3bf416bbfeb33bffc7a5ec, type: 3}
+  m_Script: {fileID: 11500000, guid: f96e64b098f3642b58bde8894b012613, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _eyeSpritesList:
@@ -105,7 +105,7 @@ MonoBehaviour:
   _eyeTransformList:
   - {fileID: 4200960382493559498}
   - {fileID: 3346010071000746649}
-  _randomNumList: 0000000001000000
+  _randomNumList: 00000000010000000200000003000000
   _howDelete: 1
   _scoreBasis: 1000
 --- !u!1 &4345313418118371314

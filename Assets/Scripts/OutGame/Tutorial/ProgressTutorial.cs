@@ -25,7 +25,7 @@ public class ProgressTutorial : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (!ES3.Load<bool>("IsFinishTutorial")) _backToMainButton.interactable = false;
+        if (!ES3.Load<bool>("IsFinishTutorial", defaultValue: false)) _backToMainButton.interactable = false;
         string textData = _textFile.text;
         _textLine = textData.Split('\n');
         

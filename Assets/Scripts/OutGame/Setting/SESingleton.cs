@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class SESingleton : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class SESingleton : MonoBehaviour
     [SerializeField] private AudioClip _pushDecideButtonSound;
     [SerializeField] private AudioClip _pushCancellButtonSound;
     // SE
+    [SerializeField] private AudioMixer _audioMixer;
     [SerializeField] private AudioClip _writeSE;
     [SerializeField] private AudioClip _completeSE;
     [SerializeField] private AudioClip _missSE;
@@ -26,6 +28,12 @@ public class SESingleton : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
+    }
+
+    void Start()
+    {
+        float value = ES3.Load<float>("SE", defaultValue: -3.0f) / 10.0f;  // seの設定
+        _audioMixer.SetFloat("SE", Mathf.Clamp(Mathf.Log10(value) * 20f,-80f,-3.0f));
     }
 
     public void PlayPushDecideButtonSound()
