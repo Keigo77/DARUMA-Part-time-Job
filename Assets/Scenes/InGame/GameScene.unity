@@ -2390,6 +2390,10 @@ PrefabInstance:
       value: TimeObject
       objectReference: {fileID: 0}
     - target: {fileID: 3167532804388462481, guid: ac5592138dde54db6bfc4a623ab1ec75, type: 3}
+      propertyPath: _stopButon
+      value: 
+      objectReference: {fileID: 7317763693570808777}
+    - target: {fileID: 3167532804388462481, guid: ac5592138dde54db6bfc4a623ab1ec75, type: 3}
       propertyPath: _countDownText
       value: 
       objectReference: {fileID: 1154879455}

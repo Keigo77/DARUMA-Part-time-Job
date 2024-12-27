@@ -8,12 +8,14 @@ using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
 using Cysharp.Threading.Tasks;
+using UnityEngine.SceneManagement;
 
 public class ExamTimeManager : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI _timeText;
     [SerializeField] private Image _timeCircle;
     [SerializeField] private float _time = 31.0f;
+    [SerializeField] private Button _stopButton;
     // カウントダウン
     private float _countDownTime = 4.02f;
     [SerializeField] private TextMeshProUGUI _countDownText; 
@@ -28,6 +30,7 @@ public class ExamTimeManager : MonoBehaviour
     private CancellationTokenSource _cancellationTokenSource;
     //試験
     [SerializeField] private ExamManager ExamManagerScript;
+    [SerializeField] private GameObject _finishPanel;
     [SerializeField] private GameObject _passPanel;
     [SerializeField] private GameObject _notPassPanel;
     
@@ -44,7 +47,7 @@ public class ExamTimeManager : MonoBehaviour
     }
 
     // Update is called once per frame
-    async void Update()
+    void Update()
     {
         if (_countDownTime > 1)
         {
@@ -66,20 +69,25 @@ public class ExamTimeManager : MonoBehaviour
         if (_time < 1.0f)
         {
             isGameFinish = true;
+            _stopButton.interactable = false;
             SESingleton.seInstance.PlaySE(_finishSE);
-            PanelControllerScript.ShowFinishPanel();
-            try
-            {
-                await UniTask.Delay(TimeSpan.FromSeconds(2.0f), cancellationToken: _cancellationTokenSource.Token);
-            }
-            catch
-            {
-                Debug.Log("キャンセル");
-            }
-            PanelControllerScript.DeleteFinishPanel();
-            if (ExamManagerScript.CheckExam()) _passPanel.SetActive(true);
-            else _notPassPanel.SetActive(true);
-            
+            ShowFinishPanel();
         }
+    }
+
+    async void ShowFinishPanel()
+    {
+        _finishPanel.SetActive(true);
+        try
+        {
+            await UniTask.Delay(TimeSpan.FromSeconds(2.0f), cancellationToken: _cancellationTokenSource.Token);
+        }
+        catch
+        {
+            Debug.Log("キャンセル");
+        }
+        _finishPanel.SetActive(false);
+        if (ExamManagerScript.CheckExam()) _passPanel.SetActive(true);
+        else _notPassPanel.SetActive(true);
     }
 }

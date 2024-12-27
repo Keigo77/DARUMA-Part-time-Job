@@ -48,22 +48,22 @@ public class SelectExam : MonoBehaviour
             case SelectExam.ExamType.boss:
                 _VSwhoText.text = "VS　上司";
                 _howDifficultText.text = "難易度：★★";
-                _winConsitionText.text = "<登場するだるま>\n2つ目がないキメラだるま\n<勝利条件>\nスコア80000を達成せよ";
+                _winConsitionText.text = "<登場するだるま>\n2つ目がないキメラだるま\n<勝利条件>\nスコア60000を達成せよ";
                 break;
             case SelectExam.ExamType.leader:
                 _VSwhoText.text = "VS　部長";
                 _howDifficultText.text = "難易度：★★★";
-                _winConsitionText.text = "<登場するだるま>\n3つ目がないキメラだるま\n<勝利条件>\nスコア120000を達成せよ";
+                _winConsitionText.text = "<登場するだるま>\n3つ目がないキメラだるま\n<勝利条件>\nスコア70000を達成せよ";
                 break;
             case SelectExam.ExamType.president:
                 _VSwhoText.text = "VS　社長";
                 _howDifficultText.text = "難易度：★★★★";
-                _winConsitionText.text = "<登場するだるま>\n3全てのだるま\n<勝利条件>\n50コンボを達成せよ\n(1度50コンボを達成すれば合格)";
+                _winConsitionText.text = "<登場するだるま>\n3全てのだるま\n<勝利条件>\n30コンボを達成せよ\n(1度30コンボを達成すれば合格)";
                 break;
             case SelectExam.ExamType.final:
                 _VSwhoText.text = "VS　ボス";
                 _howDifficultText.text = "難易度：★★★★★";
-                _winConsitionText.text = "<登場するだるま>\n全てのだるま\n<勝利条件>\n<color=#F0566E>50秒間</color>で100コンボを達成せよ\n(1度100コンボを達成すれば合格)";
+                _winConsitionText.text = "<登場するだるま>\n全てのだるま\n<勝利条件>\n<color=#F0566E>50秒間</color>で50コンボを達成せよ\n(1度50コンボを達成すれば合格)";
                 break;
             default:
                 break;

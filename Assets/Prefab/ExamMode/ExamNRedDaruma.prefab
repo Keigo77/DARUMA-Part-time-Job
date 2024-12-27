@@ -189,7 +189,7 @@ MonoBehaviour:
   _eyeTransformList:
   - {fileID: 4281819667872819071}
   - {fileID: 2363031140345337552}
-  _randomNumList: 00000000010000000200000003000000
+  _randomNumList: 0000000001000000
   _howDelete: 1
   _scoreBasis: 1000
 --- !u!1 &8953247158946622683

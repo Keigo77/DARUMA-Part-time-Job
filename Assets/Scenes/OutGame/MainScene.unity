@@ -911,7 +911,7 @@ PrefabInstance:
       objectReference: {fileID: 1665141545}
     - target: {fileID: 1538140318680135160, guid: d29001f9d544e40e9b85914e75dc65b9, type: 3}
       propertyPath: sceneName
-      value: SubDarumaCount
+      value: SumDarumaCount
       objectReference: {fileID: 0}
     - target: {fileID: 3468502165953262164, guid: d29001f9d544e40e9b85914e75dc65b9, type: 3}
       propertyPath: m_Sprite

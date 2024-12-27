@@ -35,4 +35,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/OutGame/SelectExamScene.unity
     guid: 5aae52515228949d19e91ef29e34ee97
+  - enabled: 1
+    path: Assets/Scenes/OutGame/FinalExamScene.unity
+    guid: 5cf90502597534d38b320c69da467010
   m_configObjects: {}

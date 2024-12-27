@@ -50,7 +50,8 @@ public class ChangeUserName : MonoBehaviour {
     void Start()
     {
         _deletePanelButton.SetActive(false); 
-        _nameRegisterPanel.SetActive(false);    // 名前を保存済みなら，設定画面を表示(最初は強制的に名前を登録させる)
+        if(!ES3.Load<bool>("IsFinishTutorial", defaultValue: false)) _nameRegisterPanel.SetActive(true);    // 名前を保存済みなら，設定画面を表示(最初は強制的に名前を登録させる)
+        else _nameRegisterPanel.SetActive(false);
         _inputField.text = ES3.Load<string>("PlayerName", defaultValue: "");
     }
     

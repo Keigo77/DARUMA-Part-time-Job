@@ -10,6 +10,7 @@ using UnityEngine.UI;
 
 public class TimeManager : MonoBehaviour
 {
+    [SerializeField] private Button _stopButon;
     [SerializeField] private TextMeshProUGUI _timeText;
     [SerializeField] private Image _timeCircle;
     [SerializeField] private float _time = 31.0f;
@@ -57,6 +58,7 @@ public class TimeManager : MonoBehaviour
 
         if (_time < 1.0f)
         {
+            _stopButon.interactable = false;
             isGameFinish = true;
             CheckHighScore();
             SESingleton.seInstance.PlaySE(_finishSE);

@@ -53,7 +53,7 @@ public class BGMandSettingSingleton : MonoBehaviour
 
     private void ChangeSound(string SceneName)
     {
-        if (SceneName == "GameScene")
+        if (SceneName == "GameScene" || SceneName == "ExamScene")
         {
             if (_audioSource.clip != _playingSound) // 同じBGMでなければ変更
             {
