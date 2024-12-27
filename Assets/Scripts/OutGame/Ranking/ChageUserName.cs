@@ -75,11 +75,11 @@ public class ChangeUserName : MonoBehaviour {
             return;    // ログインできていないならエラー
         }
         SESingleton.seInstance.PlayPushDecideButtonSound();
-        _deletePanelButton.SetActive(true);
         if (_inputField.text.Length > 10 || _inputField.text.Length <= 0)       // ユーザー名が10文字より長いなら中止
         {
             // エラー表示
             _text.text = "文字数が10文字以上か，入力されていません．\n入力し直して，再度お試しください．";
+            _deletePanelButton.SetActive(true);
             return;
         }
         
@@ -92,11 +92,12 @@ public class ChangeUserName : MonoBehaviour {
         Debug.Log($"ユーザ名の更新開始");
         PlayFabClientAPI.UpdateUserTitleDisplayName(request, OnUpdateUserNameSuccess, OnUpdateUserNameFailure);
     }
-  
+    
     //ユーザ名の更新成功
     private void OnUpdateUserNameSuccess(UpdateUserTitleDisplayNameResult result){
         //result.DisplayNameに更新した後のユーザ名が入ってる
         _text.text = $"ユーザ名を\n「{result.DisplayName}」\nで更新ました";
+        _deletePanelButton.SetActive(true);
         ES3.Save<string>("PlayerName", _inputField.text);   // プレイヤー名を保存
         Debug.Log($"ユーザ名の更新が成功しました : {result.DisplayName}");
     }

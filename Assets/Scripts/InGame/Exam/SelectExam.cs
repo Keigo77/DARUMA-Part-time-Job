@@ -8,6 +8,7 @@ public class SelectExam : MonoBehaviour
     public static ExamType nowExamType = ExamType.sudordinate;    // ここに試験項目を代入
     private ExamType _gettedRole;
 
+    [SerializeField] private GameObject _selectPanel;
     [SerializeField] private GameObject _showDetailPanel;
     [SerializeField] private TextMeshProUGUI _VSwhoText;
     [SerializeField] private TextMeshProUGUI _howDifficultText;
@@ -27,11 +28,12 @@ public class SelectExam : MonoBehaviour
     void Start()
     {
         _gettedRole = ES3.Load<SelectExam.ExamType>("Role", defaultValue: ExamType.parttime);    // 現在の位を取得(初期の位はバイト)
-        DeleteDetailPanel();
+        _showDetailPanel.SetActive(false);
     }
 
     public void SelectExamButtonClick(int examType)     // 試験項目を代入してからシーン遷移
     {
+        SESingleton.seInstance.PlayPushDecideButtonSound();
         SelectExam.nowExamType = (ExamType)examType;
         ShowDetailPanel();
     }
@@ -69,10 +71,13 @@ public class SelectExam : MonoBehaviour
                 break;
         }
         _showDetailPanel.SetActive(true);
+        _selectPanel.SetActive(false);
     }
 
     public void DeleteDetailPanel()
     {
+        SESingleton.seInstance.PlayPushCancellButtonSound();
         _showDetailPanel.SetActive(false);
+        _selectPanel.SetActive(true);
     }
 }
