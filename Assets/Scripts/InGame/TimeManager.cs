@@ -54,7 +54,7 @@ public class TimeManager : MonoBehaviour
 
         _time -= Time.deltaTime;
         _timeText.text = ((int)_time).ToString();
-        _timeCircle.fillAmount = (_time - 1.0f) / (_time - 1.0f);
+        _timeCircle.fillAmount = (_time - 1.0f) / 30.0f;
 
         if (_time < 1.0f)
         {
@@ -68,7 +68,7 @@ public class TimeManager : MonoBehaviour
     
     private void CheckHighScore()
     {
-        if (ES3.Load<int>("HighScore") < (int)GameManager.score)
+        if (ES3.Load<int>("HighScore", defaultValue: 0) < (int)GameManager.score)
         {
             isHighScore = true;
             ES3.Save<int>("HighScore", (int)GameManager.score);

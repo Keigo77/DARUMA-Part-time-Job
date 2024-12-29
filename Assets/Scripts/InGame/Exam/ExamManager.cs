@@ -126,7 +126,7 @@ public class ExamManager : MonoBehaviour
     {
         _maxCombo = Math.Max(_maxCombo, combo);     // 最大コンボを代入
         _passScoreText.text = $"スコア：{((int)_score)}";
-        _passScoreText.text = $"最大コンボ数：{_maxCombo}";
+        _passMaxComboText.text = $"最大コンボ数：{_maxCombo}";
         switch (SelectExam.nowExamType)
         {
             case SelectExam.ExamType.sudordinate when _maxCombo >= 50:

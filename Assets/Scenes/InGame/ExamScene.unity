@@ -822,6 +822,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _timeText: {fileID: 1545718860}
   _timeCircle: {fileID: 1703584573}
+  _initialTime: 30
   _time: 31
   _stopButton: {fileID: 7317763693570808777}
   _countDownText: {fileID: 1154879455}
@@ -922,15 +923,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2596553485342591957, guid: 63274103071b144c89525bfc726ad113, type: 3}
       propertyPath: m_LocalScale.x
-      value: 2.079768
+      value: 2.8224587
       objectReference: {fileID: 0}
     - target: {fileID: 2596553485342591957, guid: 63274103071b144c89525bfc726ad113, type: 3}
       propertyPath: m_LocalScale.y
-      value: 2.079768
+      value: 2.8224587
       objectReference: {fileID: 0}
     - target: {fileID: 2596553485342591957, guid: 63274103071b144c89525bfc726ad113, type: 3}
       propertyPath: m_LocalScale.z
-      value: 2.079768
+      value: 2.8224587
       objectReference: {fileID: 0}
     - target: {fileID: 2596553485342591957, guid: 63274103071b144c89525bfc726ad113, type: 3}
       propertyPath: m_LocalPosition.x
@@ -966,7 +967,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2596553485342591957, guid: 63274103071b144c89525bfc726ad113, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -157
+      value: -182
       objectReference: {fileID: 0}
     - target: {fileID: 2596553485342591957, guid: 63274103071b144c89525bfc726ad113, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -2315,8 +2316,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294934217
-  m_fontColor: {r: 0.78892136, g: 0.495283, b: 1, a: 1}
+    rgba: 4293010835
+  m_fontColor: {r: 0.5768624, g: 0.14640439, b: 0.8867924, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:

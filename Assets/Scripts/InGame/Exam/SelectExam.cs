@@ -10,6 +10,7 @@ public class SelectExam : MonoBehaviour
 
     [SerializeField] private GameObject _selectPanel;
     [SerializeField] private GameObject _showDetailPanel;
+    [SerializeField] private TextMeshProUGUI _nowRoleText;
     [SerializeField] private TextMeshProUGUI _VSwhoText;
     [SerializeField] private TextMeshProUGUI _howDifficultText;
     [SerializeField] private TextMeshProUGUI _winConsitionText;
@@ -28,6 +29,7 @@ public class SelectExam : MonoBehaviour
     void Start()
     {
         _gettedRole = ES3.Load<SelectExam.ExamType>("Role", defaultValue: ExamType.parttime);    // 現在の位を取得(初期の位はバイト)
+        ShowNowRole();
         _showDetailPanel.SetActive(false);
     }
 
@@ -72,6 +74,33 @@ public class SelectExam : MonoBehaviour
         }
         _showDetailPanel.SetActive(true);
         _selectPanel.SetActive(false);
+    }
+
+    private void ShowNowRole()
+    {
+        _nowRoleText.text = "現在の役職：";
+        Debug.Log((int)_gettedRole);
+        switch (_gettedRole)
+        {
+            case SelectExam.ExamType.sudordinate:
+                _nowRoleText.text += "部下";
+                break;
+            case SelectExam.ExamType.boss:
+                _nowRoleText.text += "上司";
+                break;
+            case SelectExam.ExamType.leader:
+                _nowRoleText.text += "部長";
+                break;
+            case SelectExam.ExamType.president:
+                _nowRoleText.text += "社長";
+                break;
+            case SelectExam.ExamType.final:
+                _nowRoleText.text += "ボス";
+                break;
+            default:
+                _nowRoleText.text += "バイト";
+                break;
+        }
     }
 
     public void DeleteDetailPanel()

@@ -52,6 +52,7 @@ public class PanelController : MonoBehaviour
     {
         _clearPanel.SetActive(true);
         _finishPanel.SetActive(true);
+        _stopPanel.SetActive(false);
         try
         {
             await UniTask.Delay(TimeSpan.FromSeconds(2.0f), cancellationToken: _cancellationTokenSource.Token);

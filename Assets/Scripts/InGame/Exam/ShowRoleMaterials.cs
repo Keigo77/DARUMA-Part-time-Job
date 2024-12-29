@@ -27,10 +27,11 @@ public class ShowRoleMaterials : MonoBehaviour
         {
             _materialText.text += showText[i] + "\n";
         }
+        if (gettedRole == 4) _materialText.text += ES3.Load<string>("PlayerName",defaultValue:"");      // 最後のメモには自分の名前を載せる
         _showMaterialPanel.SetActive(true);
     }
 
-    public void DeleteMaterial()
+    public void DeleteMaterial()        // 資料を非表示にする
     {
         SESingleton.seInstance.PlayPushCancellButtonSound();
         _showMaterialPanel.SetActive(false);
