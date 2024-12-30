@@ -67,7 +67,7 @@ public class SelectExam : MonoBehaviour
             case SelectExam.ExamType.final:
                 _VSwhoText.text = "VS　ボス";
                 _howDifficultText.text = "難易度：★★★★★";
-                _winConsitionText.text = "<登場するだるま>\n全てのだるま\n<勝利条件>\n<color=#F0566E>50秒間</color>で50コンボを達成せよ\n(1度50コンボを達成すれば合格)";
+                _winConsitionText.text = "<登場するだるま>\n全てのだるま\n<勝利条件>\n<color=#F0566E>50秒間</color>で75コンボを達成せよ\n(1度75コンボを達成すれば合格)";
                 break;
             default:
                 break;

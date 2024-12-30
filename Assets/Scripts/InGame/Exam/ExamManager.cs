@@ -153,7 +153,7 @@ public class ExamManager : MonoBehaviour
             case SelectExam.ExamType.president when _maxCombo >= 45:
                 ES3.Save<SelectExam.ExamType>("Role", SelectExam.ExamType.president);
                 return true;
-            case SelectExam.ExamType.final when _maxCombo >= 55:
+            case SelectExam.ExamType.final when _maxCombo >= 75:
                 ES3.Save<SelectExam.ExamType>("Role", SelectExam.ExamType.final);
                 return true;
             default:
