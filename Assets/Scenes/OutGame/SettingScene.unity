@@ -496,8 +496,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 40.30072, y: -1289.9265}
-  m_SizeDelta: {x: 873.6686, y: 3477.5713}
+  m_AnchoredPosition: {x: 40.30072, y: -1273.0085}
+  m_SizeDelta: {x: 873.6686, y: 4623.7363}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &244649511
 MonoBehaviour:
@@ -548,7 +548,18 @@ MonoBehaviour:
     PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS
     BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF
     CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE
-    SOFTWARE OR THE USE OR OTHER DEALINGS IN THE\nSOFTWARE."
+    SOFTWARE OR THE USE OR OTHER DEALINGS IN THE\nSOFTWARE.\n\n-----------------------------------\nCopyright
+    (C) 2011 Keigo Ando\n\nThis software is provided 'as-is', without any express
+    or implied\nwarranty.  In no event will the authors be held liable for any damages\narising
+    from the use of this software.\n\nPermission is granted to anyone to use this
+    software for any purpose,\nincluding commercial applications, and to alter it
+    and redistribute it\nfreely, subject to the following restrictions:\n\n1. The
+    origin of this software must not be misrepresented; you must not\n\_\_\_claim
+    that you wrote the original software. If you use this software\n\_\_\_in a product,
+    an acknowledgment in the product documentation would be\n\_\_\_appreciated but
+    is not required.\n2. Altered source versions must be plainly marked as such,
+    and must not be\n\_\_\_misrepresented as being the original software.\n3. This
+    notice may not be removed or altered from any source distribution.\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 08dc64dc886c24876a8bbae4675a99dd, type: 2}
   m_sharedMaterial: {fileID: 4291563682002666828, guid: 08dc64dc886c24876a8bbae4675a99dd, type: 2}
@@ -1026,7 +1037,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 36.140015, y: 1931}
+  m_AnchoredPosition: {x: 36.140015, y: 2520.9998}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &538869799 stripped
@@ -1084,7 +1095,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 1902}
+  m_AnchoredPosition: {x: 0, y: 2491.9998}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &643187397
@@ -1537,7 +1548,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 36.14099, y: 1931}
+  m_AnchoredPosition: {x: 36.14099, y: 2521}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &757801730
@@ -3295,7 +3306,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 36.140015, y: 1931}
+  m_AnchoredPosition: {x: 36.140015, y: 2520.9998}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1480919856
@@ -3407,7 +3418,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 36.140015, y: 1931}
+  m_AnchoredPosition: {x: 36.140015, y: 2520.9998}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1534222689
@@ -3670,7 +3681,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 19.39621, y: 523.8467}
+  m_AnchoredPosition: {x: 19.39621, y: 1113.8467}
   m_SizeDelta: {x: 712.7433, y: 91.6931}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1541654386
@@ -3918,7 +3929,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: -0.00043680987}
-  m_SizeDelta: {x: 0, y: 6109.2466}
+  m_SizeDelta: {x: 0, y: 7290.567}
   m_Pivot: {x: 0, y: 1}
 --- !u!1001 &1601557008
 PrefabInstance:
