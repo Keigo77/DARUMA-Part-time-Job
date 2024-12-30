@@ -247,7 +247,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 5882b7bed3dc64d908d53c4b7b096ce4, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.9245283, g: 0.9245283, b: 0.9245283, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -282,9 +282,6 @@ MonoBehaviour:
   _randomNumList: 00000000010000000200000003000000
   _howDelete: 2
   _scoreBasis: 1500
-  _writeSE: {fileID: 8300000, guid: 0f740ad6ea7db41408bb7c562f94cab2, type: 3}
-  _completeSE: {fileID: 8300000, guid: e5279ea80ecab456b83c797ab3d61bdc, type: 3}
-  _missSE: {fileID: 8300000, guid: 16670c80c954c4a22bb5c17d5ecd27c4, type: 3}
 --- !u!1 &6926605338258939143
 GameObject:
   m_ObjectHideFlags: 0

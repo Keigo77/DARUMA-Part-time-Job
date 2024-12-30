@@ -2110,6 +2110,10 @@ PrefabInstance:
       propertyPath: fade
       value: 
       objectReference: {fileID: 939159120}
+    - target: {fileID: 8552444580907756424, guid: 63274103071b144c89525bfc726ad113, type: 3}
+      propertyPath: sceneName
+      value: SelectExamScene
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 2390813207985288985, guid: 63274103071b144c89525bfc726ad113, type: 3}

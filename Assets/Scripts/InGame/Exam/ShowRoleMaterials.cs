@@ -19,6 +19,7 @@ public class ShowRoleMaterials : MonoBehaviour
     
     public void ShowMaterial(int gettedRole)
     {
+        _materialText.text = "";        // 初期化
         TextAsset textFile = _materials[gettedRole];  // その位の資料を表示する．
         _selectPanel.SetActive(false);
         string[] showText = textFile.text.Split('\n');
