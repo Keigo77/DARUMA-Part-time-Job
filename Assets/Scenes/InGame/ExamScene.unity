@@ -2201,6 +2201,8 @@ MonoBehaviour:
   - {fileID: 5514949742121046447, guid: 00ee2f074154046ed81c093ae21f62f1, type: 3}
   _comboText: {fileID: 1095944743}
   _text: {fileID: 2055870353}
+  _examSound: {fileID: 8300000, guid: c73c266f80af4411b9cca1d9963e55fa, type: 3}
+  _finalSound: {fileID: 8300000, guid: 12ede725a47d34a4f8073b4542cb2b9e, type: 3}
   ExamTimeManagerScript: {fileID: 314892931}
   _passScoreText: {fileID: 435484826}
   _passMaxComboText: {fileID: 22683900}

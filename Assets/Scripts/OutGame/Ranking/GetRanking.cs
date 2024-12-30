@@ -139,14 +139,19 @@ public class GetRanking : MonoBehaviour
         {
             // 自分の順位情報を取得 (Leaderboard の最初のエントリが自分)
             var entry = result.Leaderboard[0];
-            _myRankText.text = $"あなたの順位 : {entry.Position + 1}位/{_rankLength}位"; // Position は 0 始まりのため +1
-            Debug.Log($"あなたの順位 : {entry.Position + 1}位/{_rankLength}位");
+            if (ES3.Load<int>("HighScore", defaultValue: 0) == 0) _myRankText.text = "あなたのデータはまだありません";
+            else
+            {
+                _myRankText.text = $"あなたの順位 : {entry.Position + 1}位/{_rankLength}位"; // Position は 0 始まりのため +1
+                Debug.Log($"あなたの順位 : {entry.Position + 1}位/{_rankLength}位");
+            }
+
             _loadingPanel.SetActive(false); // ここで初めてロードパネルを削除
         }
         else
         {
-            Debug.LogWarning("ランキングデータがありません。");
-            _myRankText.text = "あなたのデータはありません．";
+            Debug.LogWarning("ランキングデータがありません");
+            _myRankText.text = "あなたのデータはありません";
         }
     }
 
@@ -156,14 +161,14 @@ public class GetRanking : MonoBehaviour
         Debug.LogError($"自分の順位周辺のランキング(リーダーボード)の取得に失敗しました\n{error.GenerateErrorReport()}");
     }
 
-    public void ShowNextRank()  // 次の50位を表示
+    public void ShowNextRank()  // 次の50位を表示(未使用)
     {
         if (_getScores[(_startRank + 1) * 50] == 0) return; // データがないため無効
         _startRank++;
         ShowRank();
     }
     
-    public void ShowBeforeRank()  // 前の50位を表示
+    public void ShowBeforeRank()  // 前の50位を表示(未使用)
     {
         if (_startRank - 1 < 0) return; // データがないため無効
         _startRank--;

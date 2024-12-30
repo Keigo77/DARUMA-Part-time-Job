@@ -21,12 +21,12 @@ public class Setting : MonoBehaviour
 
     void Start()
     {
-        //スライダーを動かした時の処理を登録
-        _bgmSlider.onValueChanged.AddListener(SetAudioMixerBGM);
-        _seSlider.onValueChanged.AddListener(SetAudioMixerSE);
         _framerateText.text = $"現在のフレームレート：{ES3.Load<int>("Framerate", defaultValue: 60)}fps";  // フレームレートが設定されたことがあれば，それを表示
         _bgmSlider.value = ES3.Load<float>("BGM", defaultValue: 10);
         _seSlider.value = ES3.Load<float>("SE", defaultValue: 10);
+        //スライダーを動かした時の処理を登録
+        _bgmSlider.onValueChanged.AddListener(SetAudioMixerBGM);
+        _seSlider.onValueChanged.AddListener(SetAudioMixerSE);
         _bgmVolumeText.text = _bgmSlider.value.ToString();
         _seVolumeText.text = _seSlider.value.ToString();
     }

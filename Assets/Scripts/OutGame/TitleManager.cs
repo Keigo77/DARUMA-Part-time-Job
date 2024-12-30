@@ -9,15 +9,17 @@ using UnityEngine.UI;
 
 public class TitleManager : MonoBehaviour
 {
-    public TextMeshProUGUI dotweenText;
-    public float dotweenInterval;
+    [SerializeField] TextMeshProUGUI _dotweenText;
+    [SerializeField] TextMeshProUGUI _versionText;
+    [SerializeField] float _dotweenInterval;
     private Tween _doTween;
     private LoadScene LoadSceneSript;
 
     void Start()
     {
+        _versionText.text = "ばーじょん：" + Application.version;
         LoadSceneSript = this.GetComponent<LoadScene>();
-        _doTween = dotweenText.DOFade(0.0f, dotweenInterval)   // アルファ値を0にしていく
+        _doTween = _dotweenText.DOFade(0.0f, _dotweenInterval)   // アルファ値を0にしていく
             .SetLoops(-1, LoopType.Yoyo);    // 行き来を無限に繰り返す
     }
 

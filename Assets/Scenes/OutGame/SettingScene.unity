@@ -520,21 +520,22 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "\u52B9\u679C\u97F3\u30E9\u30DC\nillustAC\n\u52B9\u679C\u97F3\u5DE5\u623F\nVSQplus\nMOMIZizm
-    MUSiC\n\n-----------------------------------\nUniTask\n\nThe MIT License (MIT)\n\nCopyright
-    (c) 2019 Yoshifumi Kawai / Cysharp, Inc.\n\nPermission is hereby granted, free
-    of charge, to any person obtaining a copy\nof this software and associated documentation
-    files (the \"Software\"), to deal\nin the Software without restriction, including
-    without limitation the rights\nto use, copy, modify, merge, publish, distribute,
-    sublicense, and/or sell\ncopies of the Software, and to permit persons to whom
-    the Software is\nfurnished to do so, subject to the following conditions:\n\nThe
-    above copyright notice and this permission notice shall be included in all\ncopies
-    or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\",
-    WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED
-    TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
-    IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
-    DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
-    ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
-    DEALINGS IN THE\nSOFTWARE.\n-----------------------------------\nUniRx\n\nThe
+    MUSiC (\u3082\u307F\u3058\u3070) | \u30D5\u30EA\u30FCBGM\nhttps://music.storyinvention.com/\n\u300CSamurai
+    Rock\u300DLifeSpiral-MJR, MOJI\nSpotify\uFF1A\nhttps://open.spotify.com/intl-ja/track/6kJbYcAurOVISFfTdoaJCn?si=6e42afd9f4514e60\n-----------------------------------\nUniTask\n\nThe
+    MIT License (MIT)\n\nCopyright (c) 2019 Yoshifumi Kawai / Cysharp, Inc.\n\nPermission
+    is hereby granted, free of charge, to any person obtaining a copy\nof this software
+    and associated documentation files (the \"Software\"), to deal\nin the Software
+    without restriction, including without limitation the rights\nto use, copy, modify,
+    merge, publish, distribute, sublicense, and/or sell\ncopies of the Software,
+    and to permit persons to whom the Software is\nfurnished to do so, subject to
+    the following conditions:\n\nThe above copyright notice and this permission notice
+    shall be included in all\ncopies or substantial portions of the Software.\n\nTHE
+    SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED,
+    INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR
+    A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT
+    HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION
+    OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE
+    SOFTWARE OR THE USE OR OTHER DEALINGS IN THE\nSOFTWARE.\n-----------------------------------\nUniRx\n\nThe
     MIT License (MIT)\n\nCopyright (c) 2018 Yoshifumi Kawai\n\nPermission is hereby
     granted, free of charge, to any person obtaining a copy\nof this software and
     associated documentation files (the \"Software\"), to deal\nin the Software without
@@ -1919,11 +1920,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9188744591086761216, guid: 6c6eb6a780ded42cea66389537c7fc31, type: 3}
       propertyPath: m_Text
-      value: "10\u6587\u5B57\u4EE5\u5185\u3067\u5165\u529B"
+      value: "3\u6587\u5B57\u301C10\u6587\u5B57\u3067\u5165\u529B"
       objectReference: {fileID: 0}
     - target: {fileID: 9188744591086761216, guid: 6c6eb6a780ded42cea66389537c7fc31, type: 3}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9188744591086761216, guid: 6c6eb6a780ded42cea66389537c7fc31, type: 3}
+      propertyPath: m_FontData.m_RichText
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9188744591086761216, guid: 6c6eb6a780ded42cea66389537c7fc31, type: 3}
+      propertyPath: m_FontData.m_FontStyle
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

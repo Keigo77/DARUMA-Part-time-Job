@@ -75,10 +75,10 @@ public class ChangeUserName : MonoBehaviour {
             return;    // ログインできていないならエラー
         }
         SESingleton.seInstance.PlayPushDecideButtonSound();
-        if (_inputField.text.Length > 10 || _inputField.text.Length <= 0)       // ユーザー名が10文字より長いなら中止
+        if (_inputField.text.Length > 10 || _inputField.text.Length <= 2)       // ユーザー名が10文字より長いなら中止
         {
             // エラー表示
-            _text.text = "文字数が10文字以上か，入力されていません．\n入力し直して，再度お試しください．";
+            _text.text = "文字数は3文字以上，10文字以下です．\n入力し直して，再度お試しください．";
             _deletePanelButton.SetActive(true);
             return;
         }

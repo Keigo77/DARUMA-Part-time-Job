@@ -67,7 +67,6 @@ public class ExamTimeManager : MonoBehaviour
         _time -= Time.deltaTime;
         _timeText.text = ((int)_time).ToString();
         _timeCircle.fillAmount = ((_time - 1.0f) / _initialTime);
-        Debug.Log($"{_time}，{_initialTime}，{_timeCircle.fillAmount}");
 
         if (_time < 1.0f)
         {

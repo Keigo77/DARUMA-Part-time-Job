@@ -33,6 +33,11 @@ public class ExamManager : MonoBehaviour
     // UniTask
     private CancellationTokenSource _cancellationTokenSource;
     
+    // 音楽BGM
+    [SerializeField] private AudioClip _examSound;
+
+    [SerializeField] private AudioClip _finalSound;
+    
     // ゲームが終わったかどうか
     [SerializeField] private ExamTimeManager ExamTimeManagerScript;
     // 試験
@@ -47,7 +52,11 @@ public class ExamManager : MonoBehaviour
     async void Start()
     {
         _cancellationTokenSource = new CancellationTokenSource();
+        // BGMを流す
         _nowExamType = SelectExam.nowExamType;
+        if (_nowExamType == SelectExam.ExamType.final)  BGMandSettingSingleton.bgmInstance.AudioSet(_finalSound);
+        else  BGMandSettingSingleton.bgmInstance.AudioSet(_examSound);
+        
         try
         {
             await UniTask.WaitUntil(() => ExamTimeManagerScript.isGameStart, PlayerLoopTiming.Update, _cancellationTokenSource.Token);

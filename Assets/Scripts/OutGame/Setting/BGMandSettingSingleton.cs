@@ -13,6 +13,7 @@ public class BGMandSettingSingleton : MonoBehaviour
     public static BGMandSettingSingleton bgmInstance;  // シングルトン
     [SerializeField] private AudioClip _mainSound;
     [SerializeField] private AudioClip _playingSound;
+    [SerializeField] private AudioClip _selectExamSound;
     [SerializeField] private AudioMixer _audioMixer;
     
     private AudioSource _audioSource;
@@ -53,26 +54,26 @@ public class BGMandSettingSingleton : MonoBehaviour
 
     private void ChangeSound(string SceneName)
     {
-        if (SceneName == "GameScene" || SceneName == "ExamScene")
-        {
-            if (_audioSource.clip != _playingSound) // 同じBGMでなければ変更
-            {
-                _audioSource.clip = _playingSound;
-                _audioSource.Play();
-            }
-        }
-        else if (SceneName == "ResultScene")
+        if (SceneName == "GameScene")   AudioSet(_playingSound);
+        else if (SceneName == "SelectExamScene") AudioSet(_selectExamSound);
+        else if (SceneName == "ResultScene" || SceneName == "FinalExamScene")   // 音を止める
         {
             _audioSource.Stop();
             _audioSource.clip = null;
         } 
-        else 
+        else if (SceneName == "ExamScene")
         {
-            if (_audioSource.clip != _mainSound) // 同じBGMでなければ変更
-            {
-                _audioSource.clip = _mainSound;
-                _audioSource.Play();
-            }
+            // ExamManagerで再生させる
+        }
+        else AudioSet(_mainSound);
+    }
+
+    public void AudioSet(AudioClip nextClip)
+    {
+        if (_audioSource.clip != nextClip)
+        {
+            _audioSource.clip = nextClip;
+            _audioSource.Play();
         }
     }
 }
