@@ -38,7 +38,7 @@ public class SendScore : MonoBehaviour
     
     void Start()
     {
-        ES3.Save<int>("DarumaCount", (GameManager._darumaCount + ES3.Load<int>("DarumaCount")));  // ダルマを完成させた数を合計して保存
+        ES3.Save<int>("DarumaCount", (GameManager._darumaCount + ES3.Load<int>("DarumaCount", defaultValue: 0)));  // ダルマを完成させた数を合計して保存
         PlayFabAuthService.Instance.Authenticate(Authtypes.Silent);
     }
     
@@ -52,7 +52,7 @@ public class SendScore : MonoBehaviour
                 new StatisticUpdate
                 {
                     StatisticName = "JobRanking",
-                    Value = ES3.Load<int>("HighScore")
+                    Value = ES3.Load<int>("HighScore", defaultValue: 0)
                 }
             }
         }, result =>
@@ -74,12 +74,12 @@ public class SendScore : MonoBehaviour
                 new StatisticUpdate
                 {
                     StatisticName = "SumDarumaCount",
-                    Value = ES3.Load<int>("DarumaCount")
+                    Value = ES3.Load<int>("DarumaCount", defaultValue: 0)
                 }
             }
         }, result =>
         {
-            Debug.Log($"だるまの合計 {ES3.Load<int>("DarumaCount")} 送信完了！");
+            Debug.Log($"だるまの合計 {ES3.Load<int>("DarumaCount", defaultValue: 0)} 送信完了！");
         }, error =>
         {
             Debug.Log(error.GenerateErrorReport());

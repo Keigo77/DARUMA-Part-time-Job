@@ -60,13 +60,16 @@ public class ExamManager : MonoBehaviour
     }
 
       //-------------------PC対応のコード-----------------------
+      /*
     void Update()
     {
+        
         if (Input.GetKeyDown(KeyCode.LeftArrow) || (Input.GetKeyDown(KeyCode.A)))    ButtonClick(0);
         else if (Input.GetKeyDown(KeyCode.RightArrow) || (Input.GetKeyDown(KeyCode.D)))    ButtonClick(1);
         else if (Input.GetKeyDown(KeyCode.UpArrow)|| (Input.GetKeyDown(KeyCode.W)))    ButtonClick(2);
         else if (Input.GetKeyDown(KeyCode.DownArrow)|| (Input.GetKeyDown(KeyCode.S)))    ButtonClick(3);
     }
+    */
     
 
     public void AppearDaruma()     // ダルマを出現させる 
@@ -129,19 +132,19 @@ public class ExamManager : MonoBehaviour
         _passMaxComboText.text = $"最大コンボ数：{_maxCombo}";
         switch (SelectExam.nowExamType)
         {
-            case SelectExam.ExamType.sudordinate when _maxCombo >= 50:
+            case SelectExam.ExamType.sudordinate when _maxCombo >= 25:
                 ES3.Save<SelectExam.ExamType>("Role", SelectExam.ExamType.sudordinate);
                 return true;
-            case SelectExam.ExamType.boss when _score >= 60000:
+            case SelectExam.ExamType.boss when _score >= 50000:
                 ES3.Save<SelectExam.ExamType>("Role", SelectExam.ExamType.boss);
                 return true;
-            case SelectExam.ExamType.leader when _score >= 70000:
+            case SelectExam.ExamType.leader when _score >= 65000:
                 ES3.Save<SelectExam.ExamType>("Role", SelectExam.ExamType.leader);
                 return true;
-            case SelectExam.ExamType.president when _maxCombo >= 30:
+            case SelectExam.ExamType.president when _maxCombo >= 45:
                 ES3.Save<SelectExam.ExamType>("Role", SelectExam.ExamType.president);
                 return true;
-            case SelectExam.ExamType.final when _maxCombo >= 50:
+            case SelectExam.ExamType.final when _maxCombo >= 55:
                 ES3.Save<SelectExam.ExamType>("Role", SelectExam.ExamType.final);
                 return true;
             default:

@@ -157,8 +157,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -148}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: 0, y: -182.36438}
+  m_SizeDelta: {x: 100, y: 96.6312}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &43121074
 MonoBehaviour:
@@ -781,10 +781,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u8CA9\u58F2\u76EE\u6A19\u306B\u3064\u3044\u3066(2024/12/15)\n\n\u4E0A\u53F8\u306B\u544A\u3050\n\n\u8FD1\u5E74\u3001\u6211\u793E\u306E\u3060\u308B\u307E\u306E\u8CA9\u58F2\u6570\u304C\u6FC0\u6E1B\u3057\u3066\u3044\u308B\uFF0E\n\u4EE5\u4E0B\u3092\u53B3\u5B88\u3059\u308B\u3053\u3068\uFF0E\n\n-
-    \u5404\u81EA\uFF0C\u53CB\u4EBA\u3084\u77E5\u308A\u5408\u3044\u306B\u6211\u793E\u306E\u3060\u308B\u307E\u3092\u52E7\u3081\u3088\uFF0E\n-
-    \u5546\u54C1\u306E\u54C1\u8CEA\u304C\u57FA\u6E96\u3092\u4E0B\u56DE\u308B\u3053\u3068\u304C\u306A\u3044\u3088\u3046\u306B\u90E8\u4E0B\u306E\u6559\u80B2\u306B\u52B1\u3081\uFF0E\n-
-    \u5B8C\u6210\u3055\u305B\u305F\u3060\u308B\u307E\u306E\u500B\u6570\u3068\uFF0C\u54C1\u8CEA\u306E\u57FA\u6E96\u304C\u4E0B\u56DE\u3063\u3066\u3057\u307E\u3063\u305F\u3060\u308B\u307E\u306E\u500B\u6570\u3092\u6BCE\u65E5\u6B20\u304B\u3055\u305A\u5831\u544A\u3059\u308B\u3053\u3068\uFF0E\n\n\u4EE5\u4E0A"
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d38b9b1fd6c574009bc487362549668d, type: 2}
   m_sharedMaterial: {fileID: -6028241941622108529, guid: d38b9b1fd6c574009bc487362549668d, type: 2}
@@ -2461,6 +2458,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 1710191002}
     m_Modifications:
     - target: {fileID: 1928397071804535045, guid: 63274103071b144c89525bfc726ad113, type: 3}
+      propertyPath: m_RaycastPadding.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1928397071804535045, guid: 63274103071b144c89525bfc726ad113, type: 3}
       propertyPath: m_RaycastPadding.y
       value: 0
       objectReference: {fileID: 0}
@@ -2494,23 +2495,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2596553485342591957, guid: 63274103071b144c89525bfc726ad113, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 48
+      value: 256
       objectReference: {fileID: 0}
     - target: {fileID: 2596553485342591957, guid: 63274103071b144c89525bfc726ad113, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 65
+      value: 256
       objectReference: {fileID: 0}
     - target: {fileID: 2596553485342591957, guid: 63274103071b144c89525bfc726ad113, type: 3}
       propertyPath: m_LocalScale.x
-      value: 3.3185658
+      value: 1.1
       objectReference: {fileID: 0}
     - target: {fileID: 2596553485342591957, guid: 63274103071b144c89525bfc726ad113, type: 3}
       propertyPath: m_LocalScale.y
-      value: 3.3185658
+      value: 1.1
       objectReference: {fileID: 0}
     - target: {fileID: 2596553485342591957, guid: 63274103071b144c89525bfc726ad113, type: 3}
       propertyPath: m_LocalScale.z
-      value: 3.3185658
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2596553485342591957, guid: 63274103071b144c89525bfc726ad113, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2526,7 +2527,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2596553485342591957, guid: 63274103071b144c89525bfc726ad113, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2596553485342591957, guid: 63274103071b144c89525bfc726ad113, type: 3}
       propertyPath: m_LocalRotation.x
@@ -2538,7 +2539,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2596553485342591957, guid: 63274103071b144c89525bfc726ad113, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2596553485342591957, guid: 63274103071b144c89525bfc726ad113, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -2558,7 +2559,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2596553485342591957, guid: 63274103071b144c89525bfc726ad113, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
+      value: 180
       objectReference: {fileID: 0}
     - target: {fileID: 3367829986074762572, guid: 63274103071b144c89525bfc726ad113, type: 3}
       propertyPath: m_Name
@@ -2748,16 +2749,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1294868412}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.2653134, y: 1.2653134, z: 1.2653134}
+  m_LocalScale: {x: 1.0639894, y: 1.0639894, z: 1.0639894}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1710191002}
+  m_Father: {fileID: 1325277900}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 1061}
+  m_AnchoredPosition: {x: 0, y: 1010}
   m_SizeDelta: {x: 256, y: 256}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1294868414
@@ -2916,6 +2917,7 @@ RectTransform:
   - {fileID: 975919106}
   - {fileID: 458004260}
   - {fileID: 1798318446}
+  - {fileID: 1294868413}
   m_Father: {fileID: 1710191002}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -3678,7 +3680,6 @@ RectTransform:
   - {fileID: 1325277900}
   - {fileID: 1109727735}
   - {fileID: 145974418}
-  - {fileID: 1294868413}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -4058,7 +4059,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.7658, y: 695}
+  m_AnchoredPosition: {x: 0.7658, y: 633}
   m_SizeDelta: {x: 941.8005, y: 180.3285}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1883138756

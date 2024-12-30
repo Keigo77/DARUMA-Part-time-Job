@@ -40,8 +40,9 @@ public class ExamTimeManager : MonoBehaviour
     {
         _cancellationTokenSource = new CancellationTokenSource();
         isHighScore = false;
-        if (SelectExam.nowExamType == SelectExam.ExamType.final) _initialTime = 51.0f;     // 最後の試験時間は，50秒
-        _timeText.text = (_time - 1.0f).ToString();           // 時間をテキストに反映
+        if (SelectExam.nowExamType == SelectExam.ExamType.final) _initialTime = 50.0f;     // 最後の試験時間は，50秒
+        _time = _initialTime;
+        _timeText.text =_initialTime.ToString();           // 時間をテキストに反映
         _countDownText.text = ((int)_countDownTime).ToString();
         _passPanel.SetActive(false);
         _notPassPanel.SetActive(false);
@@ -65,7 +66,8 @@ public class ExamTimeManager : MonoBehaviour
 
         _time -= Time.deltaTime;
         _timeText.text = ((int)_time).ToString();
-        _timeCircle.fillAmount = (_time - 1.0f) / _initialTime;
+        _timeCircle.fillAmount = ((_time - 1.0f) / _initialTime);
+        Debug.Log($"{_time}，{_initialTime}，{_timeCircle.fillAmount}");
 
         if (_time < 1.0f)
         {

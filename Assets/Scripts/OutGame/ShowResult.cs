@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using TMPro;
 using UnityEngine;
 using DG.Tweening;
@@ -57,6 +58,38 @@ public class ShowResult : MonoBehaviour
         _skipButton.SetActive(false);       // スキップボタンを消す
         _retryButton.interactable = true;   // 画面遷移を許可
         _backButton.interactable = true;
+    }
+    
+    //シェア機能
+    public void Share()
+    {
+        StartCoroutine(ShareCoroutine());
+    }
+    public IEnumerator ShareCoroutine()
+    {
+        const string fileName = "image.png";
+        string imgPath = Path.Combine(Application.persistentDataPath, fileName);
+        // 前回のデータを削除
+        if (File.Exists(imgPath)) File.Delete(imgPath);
+        //スクリーンショットを撮影
+        ScreenCapture.CaptureScreenshot(fileName);
+        // 撮影画像の保存が完了するまで待機
+        while (true)
+        {
+            if (File.Exists(imgPath)) break;
+            yield return null;
+        }
+        // 投稿する
+        string tweetText = $"今回のスコアは{GameManager.score}でした！";
+        string tweetURL = "";
+        try
+        {
+            SocialConnector.SocialConnector.Share(tweetText, tweetURL, imgPath);
+        }
+        catch (System.Exception e)
+        {
+            Debug.LogError(e.Message);
+        }
     }
 
     private void OnDisable()
