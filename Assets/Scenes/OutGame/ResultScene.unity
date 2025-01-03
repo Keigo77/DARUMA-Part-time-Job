@@ -13,7 +13,7 @@ OcclusionCullingSettings:
 --- !u!104 &2
 RenderSettings:
   m_ObjectHideFlags: 0
-  serializedVersion: 9
+  serializedVersion: 10
   m_Fog: 0
   m_FogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   m_FogMode: 3
@@ -42,8 +42,8 @@ RenderSettings:
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
-  serializedVersion: 12
-  m_GIWorkflowMode: 1
+  serializedVersion: 13
+  m_BakeOnSceneLoad: 0
   m_GISettings:
     serializedVersion: 2
     m_BounceScale: 1
@@ -66,9 +66,6 @@ LightmapSettings:
     m_LightmapParameters: {fileID: 0}
     m_LightmapsBakeMode: 1
     m_TextureCompression: 1
-    m_FinalGather: 0
-    m_FinalGatherFiltering: 1
-    m_FinalGatherRayCount: 256
     m_ReflectionCompression: 2
     m_MixedBakeMode: 2
     m_BakeBackend: 1
@@ -278,15 +275,17 @@ MonoBehaviour:
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
-  m_enableWordWrapping: 1
+  m_TextWrappingMode: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 1
+  m_ActiveFontFeatures: 6e72656b
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
+  m_EmojiFallbackSupport: 1
   m_parseCtrlCharacters: 1
   m_isOrthographic: 1
   m_isCullingEnabled: 0
@@ -321,14 +320,14 @@ RectTransform:
   m_GameObject: {fileID: 124793035}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.4066, y: 1.4066, z: 1.4066}
+  m_LocalScale: {x: 2.3639321, y: 2.3639321, z: 2.3639321}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 734458380}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 234.37317}
+  m_AnchoredPosition: {x: 0, y: 304}
   m_SizeDelta: {x: 800, y: 248.6125}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &206032695
@@ -431,15 +430,17 @@ MonoBehaviour:
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
-  m_enableWordWrapping: 1
+  m_TextWrappingMode: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 1
+  m_ActiveFontFeatures: 6e72656b
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
+  m_EmojiFallbackSupport: 1
   m_parseCtrlCharacters: 1
   m_isOrthographic: 1
   m_isCullingEnabled: 0
@@ -492,14 +493,14 @@ RectTransform:
   m_GameObject: {fileID: 476567252}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.4066, y: 1.4066, z: 1.4066}
+  m_LocalScale: {x: 1.6801836, y: 1.6801836, z: 1.6801836}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 734458380}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.0014114, y: -129}
+  m_AnchoredPosition: {x: -0.0014114, y: -154}
   m_SizeDelta: {x: 709.12, y: 140.7239}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &476567254
@@ -565,15 +566,17 @@ MonoBehaviour:
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
-  m_enableWordWrapping: 1
+  m_TextWrappingMode: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 1
+  m_ActiveFontFeatures: 6e72656b
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
+  m_EmojiFallbackSupport: 1
   m_parseCtrlCharacters: 1
   m_isOrthographic: 1
   m_isCullingEnabled: 0
@@ -712,15 +715,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7048780239185696977, guid: 6041cbc5a3c2341cfa13f2ca27776634, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.4123793
+      value: 2.4983578
       objectReference: {fileID: 0}
     - target: {fileID: 7048780239185696977, guid: 6041cbc5a3c2341cfa13f2ca27776634, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.4123793
+      value: 2.4983578
       objectReference: {fileID: 0}
     - target: {fileID: 7048780239185696977, guid: 6041cbc5a3c2341cfa13f2ca27776634, type: 3}
       propertyPath: m_LocalScale.z
-      value: 1.4123793
+      value: 2.4983578
       objectReference: {fileID: 0}
     - target: {fileID: 7048780239185696977, guid: 6041cbc5a3c2341cfa13f2ca27776634, type: 3}
       propertyPath: m_LocalPosition.x
@@ -756,7 +759,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7048780239185696977, guid: 6041cbc5a3c2341cfa13f2ca27776634, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -638
+      value: -695
       objectReference: {fileID: 0}
     - target: {fileID: 7048780239185696977, guid: 6041cbc5a3c2341cfa13f2ca27776634, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -927,8 +930,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -44.201416}
-  m_SizeDelta: {x: -90.8761, y: -271.0791}
+  m_AnchoredPosition: {x: -0, y: -44.201416}
+  m_SizeDelta: {x: -1983.666, y: -271.079}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &734458381
 MonoBehaviour:
@@ -1017,7 +1020,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.0014114, y: 587}
+  m_AnchoredPosition: {x: 0.0014114, y: 802}
   m_SizeDelta: {x: 709.12, y: 152.5536}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &758544656
@@ -1083,15 +1086,17 @@ MonoBehaviour:
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
-  m_enableWordWrapping: 1
+  m_TextWrappingMode: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 1
+  m_ActiveFontFeatures: 6e72656b
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
+  m_EmojiFallbackSupport: 1
   m_parseCtrlCharacters: 1
   m_isOrthographic: 1
   m_isCullingEnabled: 0
@@ -1336,15 +1341,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2596553485342591957, guid: 63274103071b144c89525bfc726ad113, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.2625455
+      value: 2.2333167
       objectReference: {fileID: 0}
     - target: {fileID: 2596553485342591957, guid: 63274103071b144c89525bfc726ad113, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.2625455
+      value: 2.2333167
       objectReference: {fileID: 0}
     - target: {fileID: 2596553485342591957, guid: 63274103071b144c89525bfc726ad113, type: 3}
       propertyPath: m_LocalScale.z
-      value: 1.2625455
+      value: 2.2333167
       objectReference: {fileID: 0}
     - target: {fileID: 2596553485342591957, guid: 63274103071b144c89525bfc726ad113, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1376,11 +1381,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2596553485342591957, guid: 63274103071b144c89525bfc726ad113, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -350
+      value: -804
       objectReference: {fileID: 0}
     - target: {fileID: 2596553485342591957, guid: 63274103071b144c89525bfc726ad113, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -639.41
+      value: -696.41
       objectReference: {fileID: 0}
     - target: {fileID: 2596553485342591957, guid: 63274103071b144c89525bfc726ad113, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1484,6 +1489,9 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1672,7 +1680,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 168.65, y: -174}
+  m_AnchoredPosition: {x: 276, y: -174}
   m_SizeDelta: {x: 132, y: 147}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1127551077
@@ -1814,6 +1822,9 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -2150,7 +2161,7 @@ RectTransform:
   m_GameObject: {fileID: 1869850934595945279}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.3964369, y: 1.3964369, z: 1.3964369}
+  m_LocalScale: {x: 2.4701574, y: 2.4701574, z: 2.4701574}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7078641974723406551}
@@ -2158,7 +2169,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 344, y: -638}
+  m_AnchoredPosition: {x: 792, y: -695}
   m_SizeDelta: {x: 256, y: 256}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &7078641974723406551
@@ -2243,15 +2254,17 @@ MonoBehaviour:
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
-  m_enableWordWrapping: 1
+  m_TextWrappingMode: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 1
+  m_ActiveFontFeatures: 6e72656b
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
+  m_EmojiFallbackSupport: 1
   m_parseCtrlCharacters: 1
   m_isOrthographic: 1
   m_isCullingEnabled: 0
