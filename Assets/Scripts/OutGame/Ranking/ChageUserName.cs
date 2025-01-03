@@ -96,10 +96,7 @@ public class ChangeUserName : MonoBehaviour {
     //ユーザ名の更新成功
     private void OnUpdateUserNameSuccess(UpdateUserTitleDisplayNameResult result){
         //result.DisplayNameに更新した後のユーザ名が入ってる
-        _text.text = $"ユーザ名を\n「{result.DisplayName}」\nで更新ました";
-        _deletePanelButton.SetActive(true);
-        ES3.Save<string>("PlayerName", _inputField.text);   // プレイヤー名を保存
-        Debug.Log($"ユーザ名の更新が成功しました : {result.DisplayName}");
+        SubmitScore(result.DisplayName);
     }
 
     //ユーザ名の更新失敗
@@ -107,6 +104,32 @@ public class ChangeUserName : MonoBehaviour {
     {
         _text.text = "ユーザ名の更新に失敗しました．\n通信環境を整えて，再度お試しください．";
         Debug.LogError($"ユーザ名の更新に失敗しました\n{error.GenerateErrorReport()}");
+    }
+    
+    // スコアの送信(名前をランキングに反映させる)
+    public void SubmitScore(string changedName)
+    {
+        PlayFabClientAPI.UpdatePlayerStatistics(new UpdatePlayerStatisticsRequest
+        {
+            Statistics = new List<StatisticUpdate>
+            {
+                new StatisticUpdate
+                {
+                    StatisticName = "JobRanking",
+                    Value = ES3.Load<int>("HighScore", defaultValue: 0)
+                }
+            }
+        }, result =>
+        {
+            Debug.Log($"ユーザ名の更新が成功しました : {changedName}");
+            _text.text = $"ユーザ名を\n「{changedName}」\nで更新ました";
+            _deletePanelButton.SetActive(true);
+            ES3.Save<string>("PlayerName", changedName);   // プレイヤー名を保存
+            Debug.Log($"スコア {ES3.Load<int>("HighScore", defaultValue:0)} 送信完了！");
+        }, error =>
+        {
+            Debug.Log(error.GenerateErrorReport());
+        });
     }
 
     public void DeleteInputNamePanel()

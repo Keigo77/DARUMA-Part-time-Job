@@ -57,7 +57,7 @@ public class SendScore : MonoBehaviour
             }
         }, result =>
         {
-            Debug.Log($"スコア {ES3.Load<int>("HighScore")} 送信完了！");
+            Debug.Log($"スコア {ES3.Load<int>("HighScore", defaultValue:0)} 送信完了！");
         }, error =>
         {
             _errorText.text = "ハイスコアの送信ができませんでした．\n次回プレイ時に再度送信を行います．";
