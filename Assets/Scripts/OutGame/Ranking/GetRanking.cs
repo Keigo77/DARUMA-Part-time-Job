@@ -12,6 +12,7 @@ public class GetRanking : MonoBehaviour
     [SerializeField] private TextMeshProUGUI[] _userNameTexts;
     [SerializeField] private TextMeshProUGUI[] _userScoreTexts;
     [SerializeField] private TextMeshProUGUI _myRankText;
+    [SerializeField] private TextMeshProUGUI _myHighScoreText;
     [SerializeField] private GameObject _loadingPanel;
     [SerializeField] private TextMeshProUGUI _loadingText;
     [SerializeField] private GameObject _loadingDaruma;
@@ -56,6 +57,7 @@ public class GetRanking : MonoBehaviour
         _goldImage.enabled = false;
         _silverImage.enabled = false;
         _bronzeImage.enabled = false;
+        _myHighScoreText.text = $"あなたのハイスコア：{ES3.Load<int>("HighScore", defaultValue: 0)}";
         PlayFabAuthService.Instance.Authenticate(Authtypes.Silent);
     }
 
@@ -139,7 +141,7 @@ public class GetRanking : MonoBehaviour
         {
             // 自分の順位情報を取得 (Leaderboard の最初のエントリが自分)
             var entry = result.Leaderboard[0];
-            if (ES3.Load<int>("HighScore", defaultValue: 0) == 0) _myRankText.text = "あなたのデータはまだありません";
+            if (ES3.Load<int>("HighScore", defaultValue: 0) == 0) _myRankText.text = "あなたのデータはありません";
             else
             {
                 _myRankText.text = $"あなたの順位 : {entry.Position + 1}位/{_rankLength}位"; // Position は 0 始まりのため +1

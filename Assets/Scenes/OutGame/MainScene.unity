@@ -205,7 +205,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3778527837810923189, guid: d29001f9d544e40e9b85914e75dc65b9, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -529
+      value: -681
       objectReference: {fileID: 0}
     - target: {fileID: 3778527837810923189, guid: d29001f9d544e40e9b85914e75dc65b9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -238,6 +238,10 @@ PrefabInstance:
     - target: {fileID: 4625828282105531757, guid: d29001f9d544e40e9b85914e75dc65b9, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 5748680154198028701, guid: d29001f9d544e40e9b85914e75dc65b9, type: 3}
+      propertyPath: m_text
+      value: "\u8A66\u9A13"
       objectReference: {fileID: 0}
     - target: {fileID: 8768845827793592629, guid: d29001f9d544e40e9b85914e75dc65b9, type: 3}
       propertyPath: m_Name
@@ -441,7 +445,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 2.6944, y: 750}
+  m_AnchoredPosition: {x: 2.6944, y: 866}
   m_SizeDelta: {x: 202, y: 216}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &890125025
@@ -1030,7 +1034,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3778527837810923189, guid: d29001f9d544e40e9b85914e75dc65b9, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -528
+      value: -680
       objectReference: {fileID: 0}
     - target: {fileID: 3778527837810923189, guid: d29001f9d544e40e9b85914e75dc65b9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1063,6 +1067,10 @@ PrefabInstance:
     - target: {fileID: 4625828282105531757, guid: d29001f9d544e40e9b85914e75dc65b9, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 5748680154198028701, guid: d29001f9d544e40e9b85914e75dc65b9, type: 3}
+      propertyPath: m_text
+      value: "\u7D71\u8A08"
       objectReference: {fileID: 0}
     - target: {fileID: 8768845827793592629, guid: d29001f9d544e40e9b85914e75dc65b9, type: 3}
       propertyPath: m_Name
@@ -1518,6 +1526,10 @@ PrefabInstance:
     - target: {fileID: 4625828282105531757, guid: d29001f9d544e40e9b85914e75dc65b9, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 5748680154198028701, guid: d29001f9d544e40e9b85914e75dc65b9, type: 3}
+      propertyPath: m_text
+      value: "\u696D\u52D9\u6210\u7E3E"
       objectReference: {fileID: 0}
     - target: {fileID: 8768845827793592629, guid: d29001f9d544e40e9b85914e75dc65b9, type: 3}
       propertyPath: m_Name

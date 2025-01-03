@@ -15,6 +15,7 @@ public class ShowResult : MonoBehaviour
     [SerializeField] private GameObject _skipButton;
     [SerializeField] private Button _retryButton;
     [SerializeField] private Button _backButton;
+    [SerializeField] private Button _shareButton;
     [SerializeField] private AudioClip _resultSound;
     [SerializeField] private AudioClip _showScoreSound;
     private Tween _tween;
@@ -26,6 +27,7 @@ public class ShowResult : MonoBehaviour
         _highScoreText.enabled = false;
         _retryButton.interactable = false;
         _backButton.interactable = false;
+        _shareButton.interactable = false;
         
         float _initialScore = 0;
 
@@ -58,6 +60,7 @@ public class ShowResult : MonoBehaviour
         _skipButton.SetActive(false);       // スキップボタンを消す
         _retryButton.interactable = true;   // 画面遷移を許可
         _backButton.interactable = true;
+        _shareButton.interactable = true;
     }
     
     //シェア機能
@@ -80,8 +83,8 @@ public class ShowResult : MonoBehaviour
             yield return null;
         }
         // 投稿する
-        string tweetText = $"今回のスコアは{GameManager.score}でした！";
-        string tweetURL = "";
+        string tweetText = $"今回のスコアは{GameManager.score}でした！\n#だる目　で色んなだるまを完成させよう！";
+        string tweetURL = "https://apps.apple.com/jp/app/%E3%81%A0%E3%82%8B%E7%9B%AE/id6739993039";
         try
         {
             SocialConnector.SocialConnector.Share(tweetText, tweetURL, imgPath);
