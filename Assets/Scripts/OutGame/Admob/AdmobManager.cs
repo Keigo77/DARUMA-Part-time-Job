@@ -10,6 +10,10 @@ public class AdmobManager : MonoBehaviour
 #if UNITY_ANDROID
   private string _adUnitId = "ca-app-pub-3940256099942544/6300978111";
 #elif UNITY_IPHONE
+    // テスト：ca-app-pub-3940256099942544~1458002511
+    // 本番：ca-app-pub-3212730950952275~6506693470
+    // テスト:ca-app-pub-3940256099942544/2934735716
+    // 本番:ca-app-pub-3212730950952275/4887593699
     private string _adUnitId = "ca-app-pub-3212730950952275/4887593699";
 #else
   private string _adUnitId = "unused";
