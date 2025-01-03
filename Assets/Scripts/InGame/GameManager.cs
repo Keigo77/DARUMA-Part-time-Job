@@ -52,13 +52,16 @@ public class GameManager : MonoBehaviour
     }
 
       //-------------------PC対応のコード-----------------------
+      /*
     void Update()
     {
+        
         if (Input.GetKeyDown(KeyCode.LeftArrow) || (Input.GetKeyDown(KeyCode.A)))    ButtonClick(0);
         if (Input.GetKeyDown(KeyCode.RightArrow) || (Input.GetKeyDown(KeyCode.D)))    ButtonClick(1);
         if (Input.GetKeyDown(KeyCode.UpArrow)|| (Input.GetKeyDown(KeyCode.W)))    ButtonClick(2);
         if (Input.GetKeyDown(KeyCode.DownArrow)|| (Input.GetKeyDown(KeyCode.S)))    ButtonClick(3);
     }
+    */
 
     public void AppearDaruma()     // ダルマを出現させる 
     {
@@ -80,7 +83,7 @@ public class GameManager : MonoBehaviour
     public void ButtonClick(int directionNUm)
     {
         if (TimeManagerScript.isGameFinish || !TimeManagerScript.isGameStart) return;
-        DarumaControllerScript.ButtonClick(directionNUm);
+        DarumaControllerScript.ButtonClicked(directionNUm);
     }
 
     public void ResetCombo()

@@ -30,7 +30,7 @@ public class DarumaController : MonoBehaviour
         }
     }
 
-    public void ButtonClick(int directionNum)
+    public void ButtonClicked(int directionNum)
     {
         if (_eyeSpritesList.Length <= directionNum) return;     // 2つ目だるまの時に上下ボタンを押したら早期return
         seInstance.PlayWriteSE();  // 書く効果音
