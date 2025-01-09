@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class DarumaController : MonoBehaviour
 {
@@ -12,12 +14,16 @@ public class DarumaController : MonoBehaviour
     
     GameManager GameManagerScript = null;
     private SESingleton seInstance;
-    
+
+    private void Awake()
+    {
+        this.seInstance = SESingleton.seInstance;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
         DeleteEye(_howDelete);
-        this.seInstance = SESingleton.seInstance;
     }
 
     public void DeleteEye(int howDelete)    // ランダムで選ばれた片方の目を削除する
