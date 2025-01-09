@@ -31,7 +31,7 @@ public class SelectExam : MonoBehaviour
     private void Awake()
     {
         _gettedRole = ES3.Load<SelectExam.ExamType>("Role", defaultValue: ExamType.parttime);    // 現在の位を取得(初期の位はバイト)
-        if ((int)_gettedRole >= 4)  _lockImage.enabled = false;
+        if ((int)_gettedRole >= 4 && _lockImage != null)  _lockImage.enabled = false;
     }
 
     // Start is called before the first frame update
