@@ -119,6 +119,7 @@ public class ExamManager : MonoBehaviour
         if (_missCount >= 18)
         {
             _score = -1000000;
+            _maxCombo = -100;
             ExamTimeManagerScript.ExamFinish();
         }
     }
