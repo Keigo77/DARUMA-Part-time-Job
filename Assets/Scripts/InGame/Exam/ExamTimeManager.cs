@@ -70,10 +70,7 @@ public class ExamTimeManager : MonoBehaviour
 
         if (_time < 1.0f)
         {
-            isGameFinish = true;
-            _stopButton.interactable = false;
-            SESingleton.seInstance.PlaySE(_finishSE);
-            ShowFinishPanel();
+            ExamFinish();
         }
     }
 
@@ -91,5 +88,14 @@ public class ExamTimeManager : MonoBehaviour
         _finishPanel.SetActive(false);
         if (ExamManagerScript.CheckExam()) _passPanel.SetActive(true);
         else _notPassPanel.SetActive(true);
+    }
+
+    public void ExamFinish()
+    {
+        if (isGameFinish) return;   // すでに終了処理をしているなら，2回目は呼び出さない
+        isGameFinish = true;
+        _stopButton.interactable = false;
+        SESingleton.seInstance.PlaySE(_finishSE);
+        ShowFinishPanel();
     }
 }

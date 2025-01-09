@@ -18,8 +18,16 @@ public class ShowResult : MonoBehaviour
     [SerializeField] private Button _shareButton;
     [SerializeField] private AudioClip _resultSound;
     [SerializeField] private AudioClip _showScoreSound;
+
+    private int _showScore = 0;
     private Tween _tween;
-    
+
+    private void Awake()
+    {
+        if (GameManager.isEyeEnd) _showScore = -1000000;
+        else _showScore = (int)GameManager.score;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -39,8 +47,8 @@ public class ShowResult : MonoBehaviour
                 _initialScore = x;
                 _scoreText.text = ((int)_initialScore).ToString();
             },
-            ((int)GameManager.score),
-            GameManager.score / 12000 // アニメーション時間
+            _showScore,
+            GameManager.score / 20000 // アニメーション時間
         ).OnComplete(() =>
         {
             SESingleton.seInstance.PlaySE(_showScoreSound);

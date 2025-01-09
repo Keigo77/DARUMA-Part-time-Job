@@ -58,11 +58,7 @@ public class TimeManager : MonoBehaviour
 
         if (_time < 1.0f)
         {
-            _stopButon.interactable = false;
-            isGameFinish = true;
-            CheckHighScore();
-            SESingleton.seInstance.PlaySE(_finishSE);
-            PanelControllerScript.ShowFinishPanel();
+            GameFinish();
         }
     }
     
@@ -73,5 +69,15 @@ public class TimeManager : MonoBehaviour
             isHighScore = true;
             ES3.Save<int>("HighScore", (int)GameManager.score);
         }
+    }
+
+    public void GameFinish()
+    {
+        if (isGameFinish) return;   // すでに終了処理をしているなら，2回目は呼び出さない
+        _stopButon.interactable = false;
+        isGameFinish = true;
+        CheckHighScore();
+        SESingleton.seInstance.PlaySE(_finishSE);
+        PanelControllerScript.ShowFinishPanel();
     }
 }

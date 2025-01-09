@@ -42,7 +42,7 @@ public class DarumaController : MonoBehaviour
         }
         else
         {
-            _eyeTransformList[directionNum].localScale *= 1.1f;    // ミスしたら目を大きくする，コンボリセット，ミス効果音
+            _eyeTransformList[directionNum].localScale *= 1.3f;    // ミスしたら目を大きくする，コンボリセット，ミス効果音
             GameManagerScript.ResetCombo();
             this.seInstance.PlayMissSE();
         }

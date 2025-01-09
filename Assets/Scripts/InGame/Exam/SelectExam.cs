@@ -1,7 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SelectExam : MonoBehaviour
 {
@@ -14,6 +16,7 @@ public class SelectExam : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _VSwhoText;
     [SerializeField] private TextMeshProUGUI _howDifficultText;
     [SerializeField] private TextMeshProUGUI _winConsitionText;
+    [SerializeField] private Image _lockImage;  // 最終試験へのボタンの鍵マーク
     
     public enum ExamType    // バイト，部下，上司，部長，社長，ボスの順で昇格していく
     {
@@ -24,11 +27,17 @@ public class SelectExam : MonoBehaviour
         president = 4,
         final = 5
     }
-    
+
+    private void Awake()
+    {
+        _gettedRole = ES3.Load<SelectExam.ExamType>("Role", defaultValue: ExamType.parttime);    // 現在の位を取得(初期の位はバイト)
+        if ((int)_gettedRole >= 4)  _lockImage.enabled = false;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
-        _gettedRole = ES3.Load<SelectExam.ExamType>("Role", defaultValue: ExamType.parttime);    // 現在の位を取得(初期の位はバイト)
+
         ShowNowRole();
         _showDetailPanel.SetActive(false);
     }
@@ -62,7 +71,7 @@ public class SelectExam : MonoBehaviour
             case SelectExam.ExamType.president:
                 _VSwhoText.text = "VS　社長";
                 _howDifficultText.text = "難易度：★★★★";
-                _winConsitionText.text = "<登場するだるま>\n3全てのだるま\n<勝利条件>\n45コンボを達成せよ\n(1度45コンボを達成すれば合格)";
+                _winConsitionText.text = "<登場するだるま>\n全てのだるま\n<勝利条件>\n45コンボを達成せよ\n(1度45コンボを達成すれば合格)";
                 break;
             case SelectExam.ExamType.final:
                 _VSwhoText.text = "VS　ボス";

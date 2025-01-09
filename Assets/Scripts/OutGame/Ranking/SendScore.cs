@@ -57,10 +57,12 @@ public class SendScore : MonoBehaviour
             }
         }, result =>
         {
+            if (GameManager.isEyeEnd) _errorText.text = "会社が墨だらけになったため\n本日の業務は中止です";
             Debug.Log($"スコア {ES3.Load<int>("HighScore", defaultValue:0)} 送信完了！");
         }, error =>
         {
-            _errorText.text = "ハイスコアの送信ができませんでした．\n次回プレイ時に再度送信を行います．";
+            if (GameManager.isEyeEnd) _errorText.text = "会社が墨だらけになったため\n本日の業務は中止です";
+            else _errorText.text = "ハイスコアの送信ができませんでした．\n次回プレイ時に再度送信を行います";
             Debug.Log(error.GenerateErrorReport());
         });
     }

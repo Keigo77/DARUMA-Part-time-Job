@@ -21,8 +21,7 @@ public class GetRanking : MonoBehaviour
     private string[] _getNames = new string[200];
     private int[] _getScores = new int[200];
     private int _startRank = 0;
-    private int _index = 0;
-    private int _rankLength = 0;
+    private int _rankLength = 0;        // 自分の順位表示に使用
     
     // 1位〜3位の画像
     [SerializeField] private Image _goldImage;
@@ -66,11 +65,14 @@ public class GetRanking : MonoBehaviour
         int index = 0;
         PlayFabClientAPI.GetLeaderboard(new GetLeaderboardRequest
         {
-            StatisticName = "JobRanking"
+            StatisticName = "JobRanking",
+            StartPosition = _startRank,
+            MaxResultsCount = 50
         }, result =>
         {
             foreach (var item in result.Leaderboard)
             {
+                Debug.Log(result.Leaderboard.Count);
                 if (index >= 200) return;   // 200人以上のデータは取得しない
                 string displayName = item.DisplayName;
                 if (displayName == null)
@@ -96,31 +98,28 @@ public class GetRanking : MonoBehaviour
 
     public void ShowRank()
     {
+        int index = 0;
         // ランクをテキストに反映
-        for (int i = (50 * _startRank); i < (_startRank + 1 ) * 50; _index++)
+        for (int i = 0; i < 50; index++)
         {
             if (_getScores[i] != 0)
             {
                 if (_getRanks[i] + 1 == 1) _goldImage.enabled = true;
                 else if (_getRanks[i] + 1 == 2) _silverImage.enabled = true;
                 else if (_getRanks[i] + 1 == 3) _bronzeImage.enabled = true;
-                _rankTexts[_index].text = (_getRanks[i] + 1).ToString();
-                _userNameTexts[_index].text = _getNames[i];
-                _userScoreTexts[_index].text = _getScores[i].ToString();
+                _rankTexts[index].text = (_getRanks[i] + 1).ToString();
+                _userNameTexts[index].text = _getNames[i];
+                _userScoreTexts[index].text = _getScores[i].ToString();
             }
-            else   // データがない時は，空欄を表示
-            {
-                _rankTexts[_index].text = "";
-                _userNameTexts[_index].text = "";
-                _userScoreTexts[_index].text = "";
-            }
+            else break;
             i++;
         }
         GetLeaderboardAroundPlayer();   // 自分の順位を取得
-        _index = 0;
+        index = 0;
     }
     
     public void GetLeaderboardAroundPlayer() { 
+        if (!ES3.KeyExists("HighScore"))    _myRankText.text = "あなたのデータはありません";
         //GetLeaderboardAroundPlayerRequestのインスタンスを生成
         var request = new GetLeaderboardAroundPlayerRequest{
             StatisticName   = "JobRanking", //ランキング名(統計情報名)
@@ -141,19 +140,15 @@ public class GetRanking : MonoBehaviour
         {
             // 自分の順位情報を取得 (Leaderboard の最初のエントリが自分)
             var entry = result.Leaderboard[0];
-            if (ES3.Load<int>("HighScore", defaultValue: 0) == 0) _myRankText.text = "あなたのデータはありません";
-            else
-            {
-                _myRankText.text = $"あなたの順位 : {entry.Position + 1}位/{_rankLength}位"; // Position は 0 始まりのため +1
-                Debug.Log($"あなたの順位 : {entry.Position + 1}位/{_rankLength}位");
-            }
+            _myRankText.text = $"あなたの順位 : {entry.Position + 1}位/{_rankLength}位"; // Position は 0 始まりのため +1
+            Debug.Log($"あなたの順位 : {entry.Position + 1}位/{_rankLength}位");
 
             _loadingPanel.SetActive(false); // ここで初めてロードパネルを削除
         }
         else
         {
             Debug.LogWarning("ランキングデータがありません");
-            _myRankText.text = "あなたのデータはありません";
+            _myRankText.text = "ランキングのデータがありません";
         }
     }
 
@@ -163,17 +158,18 @@ public class GetRanking : MonoBehaviour
         Debug.LogError($"自分の順位周辺のランキング(リーダーボード)の取得に失敗しました\n{error.GenerateErrorReport()}");
     }
 
+    
     public void ShowNextRank()  // 次の50位を表示(未使用)
     {
         if (_getScores[(_startRank + 1) * 50] == 0) return; // データがないため無効
         _startRank++;
-        ShowRank();
+        GetLeaderboard();
     }
     
     public void ShowBeforeRank()  // 前の50位を表示(未使用)
     {
         if (_startRank - 1 < 0) return; // データがないため無効
         _startRank--;
-        ShowRank();
+        GetLeaderboard();
     }
 }

@@ -32,10 +32,13 @@ public class GameManager : MonoBehaviour
     
     // ゲームが終わったかどうか
     [SerializeField] private TimeManager TimeManagerScript;
+    private int _missCount = 0;     // ミスをした数
+    public static bool isEyeEnd { private set; get; } = false;    // 目をでかくしすぎてフィニッシュしたなら，スコア表示をマイナスにするのに使用
     
     // Start is called before the first frame update
     async void Start()
     {
+        isEyeEnd = false;
         _cancellationTokenSource = new CancellationTokenSource();
         score = 0.0f;   // ここで毎回スコアをリセット
         _darumaCount = 0;       // だるまの合計を取得
@@ -92,6 +95,12 @@ public class GameManager : MonoBehaviour
         _comboText.text = "";
         _text.text = "";
         GameManager.score -= 1500;  // 連打防止のため，ミスしたら原点
+        _missCount++;
+        if (_missCount >= 18)
+        {
+            isEyeEnd = true;
+            TimeManagerScript.GameFinish();
+        }
     }
 
     public void AddScoreCombo(float score)       // ダルマ側で実行される
@@ -101,8 +110,7 @@ public class GameManager : MonoBehaviour
         combo++;
         _comboText.text = combo.ToString();
         _text.text = "こんぼ！";
-        Debug.Log("倍率：" + (combo * 0.1f + 1.0f));
-        Debug.Log(GameManager.score);
+        _missCount = 0;
     }
 
     private void OnDisable()

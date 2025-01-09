@@ -40,6 +40,7 @@ public class ExamManager : MonoBehaviour
     
     // ゲームが終わったかどうか
     [SerializeField] private ExamTimeManager ExamTimeManagerScript;
+    private int _missCount = 0;     // ミスをした数
     // 試験
     private int _maxCombo = 0;
     private SelectExam.ExamType _nowExamType;
@@ -114,6 +115,8 @@ public class ExamManager : MonoBehaviour
         _comboText.text = "";
         _text.text = "";
         _score -= 1500;  // 連打防止のため，ミスしたら原点
+        _missCount++;
+        if (_missCount >= 18)   ExamTimeManagerScript.ExamFinish();
     }
 
     public void AddScoreCombo(float score)       // ダルマ側で実行される
@@ -123,8 +126,7 @@ public class ExamManager : MonoBehaviour
         combo++;
         _comboText.text = combo.ToString();
         _text.text = "こんぼ！";
-        Debug.Log("倍率：" + (combo * 0.1f + 1.0f));
-        Debug.Log(_score);
+        _missCount = 0;
     }
 
     private void OnDisable()
