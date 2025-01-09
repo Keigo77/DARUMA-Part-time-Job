@@ -56,7 +56,8 @@ public class GetRanking : MonoBehaviour
         _goldImage.enabled = false;
         _silverImage.enabled = false;
         _bronzeImage.enabled = false;
-        _myHighScoreText.text = $"あなたのハイスコア：{ES3.Load<int>("HighScore", defaultValue: 0)}";
+        if (!ES3.KeyExists("HighScore")) _myHighScoreText.text = "";
+        else _myHighScoreText.text = $"あなたのハイスコア：{ES3.Load<int>("HighScore", defaultValue: 0)}";
         PlayFabAuthService.Instance.Authenticate(Authtypes.Silent);
     }
 
@@ -79,6 +80,8 @@ public class GetRanking : MonoBehaviour
                 {
                     displayName = "NoName";
                 }
+
+                if (item.StatValue == 0) break;     // スコア0のプレイヤーはランキングに含めない
                 _getRanks[index] = item.Position;   // 配列に全て入れる
                 _getNames[index] = displayName;
                 _getScores[index] = item.StatValue;
@@ -118,8 +121,13 @@ public class GetRanking : MonoBehaviour
         index = 0;
     }
     
-    public void GetLeaderboardAroundPlayer() { 
-        if (!ES3.KeyExists("HighScore"))    _myRankText.text = "あなたのデータはありません";
+    public void GetLeaderboardAroundPlayer() {
+        if (!ES3.KeyExists("HighScore"))
+        {
+            _myRankText.text = "あなたのデータはありません";
+            _loadingPanel.SetActive(false);
+            return;
+        }
         //GetLeaderboardAroundPlayerRequestのインスタンスを生成
         var request = new GetLeaderboardAroundPlayerRequest{
             StatisticName   = "JobRanking", //ランキング名(統計情報名)

@@ -18,16 +18,8 @@ public class ShowResult : MonoBehaviour
     [SerializeField] private Button _shareButton;
     [SerializeField] private AudioClip _resultSound;
     [SerializeField] private AudioClip _showScoreSound;
-
-    private int _showScore = 0;
     private Tween _tween;
-
-    private void Awake()
-    {
-        if (GameManager.isEyeEnd) _showScore = -1000000;
-        else _showScore = (int)GameManager.score;
-    }
-
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -47,7 +39,7 @@ public class ShowResult : MonoBehaviour
                 _initialScore = x;
                 _scoreText.text = ((int)_initialScore).ToString();
             },
-            _showScore,
+            ((int)GameManager.score),
             GameManager.score / 20000 // アニメーション時間
         ).OnComplete(() =>
         {
@@ -76,6 +68,7 @@ public class ShowResult : MonoBehaviour
     {
         StartCoroutine(ShareCoroutine());
     }
+
     public IEnumerator ShareCoroutine()
     {
         const string fileName = "image.png";
@@ -90,6 +83,7 @@ public class ShowResult : MonoBehaviour
             if (File.Exists(imgPath)) break;
             yield return null;
         }
+
         // 投稿する
         string tweetText = $"今回のスコアは{GameManager.score}でした！\n#だる目　で色んなだるまを完成させよう！";
         string tweetURL = "https://apps.apple.com/jp/app/%E3%81%A0%E3%82%8B%E7%9B%AE/id6739993039";
@@ -102,6 +96,7 @@ public class ShowResult : MonoBehaviour
             Debug.LogError(e.Message);
         }
     }
+
 
     private void OnDisable()
     { 

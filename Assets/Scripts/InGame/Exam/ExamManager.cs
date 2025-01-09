@@ -116,7 +116,11 @@ public class ExamManager : MonoBehaviour
         _text.text = "";
         _score -= 1500;  // 連打防止のため，ミスしたら原点
         _missCount++;
-        if (_missCount >= 18)   ExamTimeManagerScript.ExamFinish();
+        if (_missCount >= 18)
+        {
+            _score = -1000000;
+            ExamTimeManagerScript.ExamFinish();
+        }
     }
 
     public void AddScoreCombo(float score)       // ダルマ側で実行される

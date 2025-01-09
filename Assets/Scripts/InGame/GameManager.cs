@@ -99,6 +99,7 @@ public class GameManager : MonoBehaviour
         if (_missCount >= 18)
         {
             isEyeEnd = true;
+            score = -1000000;
             TimeManagerScript.GameFinish();
         }
     }
