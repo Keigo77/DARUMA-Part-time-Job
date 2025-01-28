@@ -116,10 +116,11 @@ public class ExamManager : MonoBehaviour
         _text.text = "";
         _score -= 1500;  // 連打防止のため，ミスしたら原点
         _missCount++;
-        if (_missCount >= 18)
+        if (_missCount >= 18)       // ミスしすぎのエンド
         {
             _score = -1000000;
-            _maxCombo = -100;
+            _maxCombo = 0;
+            combo = 0;
             ExamTimeManagerScript.ExamFinish();
         }
     }
